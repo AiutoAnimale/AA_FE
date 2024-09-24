@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "../components/Layout";
 import Login from "../pages/Auth";
 import Signup from "../pages/User";
 import Community from "../pages/Community";
@@ -11,12 +12,14 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/community" element={<Community />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/missing" element={<Missing />} />
-        <Route path="/knowing" element={<Knowing />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/missing" element={<Missing />} />
+          <Route path="/knowing" element={<Knowing />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
