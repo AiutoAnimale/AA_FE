@@ -7,6 +7,7 @@ import Community from "../pages/Community";
 import Main from "../pages/Main";
 import Missing from "../pages/Missing";
 import Knowing from "../pages/Knowing";
+import Info from "../pages/Info";
 
 export default function Router() {
   return (
@@ -15,10 +16,11 @@ export default function Router() {
         <Route path="/" element={<Layout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/community" element={<Community />} />
           <Route path="/main" element={<Main />} />
           <Route path="/missing" element={<Missing />} />
+          <Route path="/community" element={<Community />} />
           <Route path="/knowing" element={<Knowing />} />
+          <Route path="/info" element={<Info />} />
         </Route>
       </Routes>
     </BrowserRouter>
