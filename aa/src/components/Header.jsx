@@ -9,15 +9,21 @@ export default function Header() {
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState();
 
+    const MainList = [
+        { name: "실종", path: "/main" },
+        { name: "커뮤니티", path: "/community" },
+        { name: "지식톡톡", path: "/knowing" },
+     ];
+
     return (
         <>
             <Container>
                 <List>
                     <DataContainer>
                         <TextLogo onClick={() => navigate("/main")} />
-                        <Data onClick={() => navigate("/missing")}>실종</Data>
-                        <Data onClick={() => navigate("/community")}>커뮤니티</Data>
-                        <Data onClick={() => navigate("/knowing")}>지식톡톡</Data>
+                        {MainList.map((item, index) => (
+                            <Data key={index} onClick={() => navigate(item.path)}>{item.name}</Data>
+                        ))}
                     </DataContainer>
                     {isLogin ? (
                         <Data onClick={() => navigate("/info")}>님</Data>
@@ -39,7 +45,9 @@ const Container = styled.header`
 `;
 
 const List = styled.div`
-    width: 885px;
+    max-width: 885px;
+    padding: 0px 30px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,6 +77,10 @@ const Data = styled.button`
 
     &:hover {
         cursor: pointer;
+    }
+
+    @media screen and (max-width: ${breakpoints.mobileSmall}) {
+        display: none;
     }
 `
 
