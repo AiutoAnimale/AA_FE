@@ -55,6 +55,7 @@ const BannerInnerDiv = styled.div`
     max-width: 885px;
     width: 100%;
     height: 100%;
+    padding: 0px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -62,7 +63,7 @@ const BannerInnerDiv = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url(${MainBackground});
-
+    
     @media screen and (max-width: ${breakpoints.mobileSmall}) {
         background-image: none;
    }
@@ -112,7 +113,7 @@ const Temp = styled.div`
     width: 40%;
 
     @media screen and (max-width: ${breakpoints.mobileSmall}) {
-        width: 20%;
+        display: none;
     }
 `
 
@@ -120,4 +121,8 @@ const Ment = styled.div`
     font-size: 0.9rem;
     font-weight: medium;
     color: ${color.Gray[5]};
+
+    @media screen and (max-width: ${breakpoints.mobileSmall}) {
+        font-size: 0.8rem;
+    }
 `

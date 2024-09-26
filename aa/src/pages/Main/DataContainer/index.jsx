@@ -12,10 +12,10 @@ export default function DataContainer(props) {
                     </TextDiv>
                     <Bottom>
                         <BottomList border={"none"}>
-                            <Number color={color.Orange[0]}>1</Number>
+                            <Number color={color.Orange[2]}>1</Number>
                             <Column>
                                 <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[4]} color={color.Orange[0]}>#일상</Tag>
+                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
                                     <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
                                 </MainDiv>
                                 <MainDiv state={"space-between"}>
@@ -25,16 +25,56 @@ export default function DataContainer(props) {
                             </Column>
                         </BottomList>
                         <BottomList border={"solid"}>
-                            <Number color={color.Orange[0]}>2</Number>
+                            <Number color={color.Orange[2]}>2</Number>
+                            <Column>
+                                <MainDiv state={"flex-start"}>
+                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
+                                </MainDiv>
+                                <MainDiv state={"space-between"}>
+                                    <UserName>초코 보호자</UserName>
+                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
+                                </MainDiv>
+                            </Column>
                         </BottomList>
                         <BottomList border={"solid"}>
-                            <Number color={color.Orange[0]}>3</Number>
+                            <Number color={color.Orange[2]}>3</Number>
+                            <Column>
+                                <MainDiv state={"flex-start"}>
+                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
+                                </MainDiv>
+                                <MainDiv state={"space-between"}>
+                                    <UserName>초코 보호자</UserName>
+                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
+                                </MainDiv>
+                            </Column>
                         </BottomList>
                         <BottomList border={"solid"}>
                             <Number color={color.Black}>4</Number>
+                            <Column>
+                                <MainDiv state={"flex-start"}>
+                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
+                                </MainDiv>
+                                <MainDiv state={"space-between"}>
+                                    <UserName>초코 보호자</UserName>
+                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
+                                </MainDiv>
+                            </Column>
                         </BottomList>
                         <BottomList border={"solid"}>
                             <Number color={color.Black}>5</Number>
+                            <Column>
+                                <MainDiv state={"flex-start"}>
+                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
+                                </MainDiv>
+                                <MainDiv state={"space-between"}>
+                                    <UserName>초코 보호자</UserName>
+                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
+                                </MainDiv>
+                            </Column>
                         </BottomList>
                         <MoreBtn>{props.btnText}</MoreBtn>
                     </Bottom>
@@ -55,6 +95,7 @@ const Text = styled.div`
     font-size: 1.5rem;
     font-weight: bolder;
     color: ${props => props.color};
+    user-select: none;
 `
 
 const TextDiv = styled.div`
@@ -96,6 +137,7 @@ const MoreBtn = styled.button`
     font-weight: medium;
     color: ${color.Gray[7]};
     border-radius: 0px 0px 20px 20px;
+    user-select: none;
 
     &:hover {
         cursor: pointer;
@@ -109,18 +151,24 @@ const Number = styled.div`
 `
 
 const Tag = styled.div`
-    padding: 5px 10px;
+    padding: 3px 7px;
     border-radius: 5px;
     background-color: ${props => props.backColor};
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: medium;
     color: ${props => props.color};
+    white-space: nowrap;
+    user-select: none;
 `
 
 const MainText = styled.div`
     font-size: 1.1rem;
     font-weight: medium;
     color: ${color.Black};
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
 `
 
 const MainDiv = styled.div`
@@ -128,7 +176,18 @@ const MainDiv = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     justify-content: ${props => props.state};
+
+    @media screen and (min-width: ${breakpoints.tabletLarge}) {
+        width: 95%;
+    }
+    @media screen and (max-width: ${breakpoints.tabletSmall}) {
+        width: 90%;
+    }
+    @media screen and (max-width: ${breakpoints.mobileSmall}) {
+        width: 80%;
+    }
 `
 
 const Column = styled.div`
@@ -144,4 +203,5 @@ const UserName = styled.div`
     font-size: 1rem;
     font-weight: medium;
     color: ${color.Gray[8]};
+    user-select: none;
 `
