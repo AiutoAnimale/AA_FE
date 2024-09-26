@@ -12,10 +12,10 @@ export default function DataContainer(props) {
                     </TextDiv>
                     <Bottom>
                         <BottomList border={"none"}>
-                            <Number color={color.Orange[2]}>1</Number>
+                            <Number color={color.Orange[1]}>1</Number>
                             <Column>
                                 <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
                                     <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
                                 </MainDiv>
                                 <MainDiv state={"space-between"}>
@@ -25,10 +25,10 @@ export default function DataContainer(props) {
                             </Column>
                         </BottomList>
                         <BottomList border={"solid"}>
-                            <Number color={color.Orange[2]}>2</Number>
+                            <Number color={color.Orange[1]}>2</Number>
                             <Column>
                                 <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
                                     <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
                                 </MainDiv>
                                 <MainDiv state={"space-between"}>
@@ -38,10 +38,10 @@ export default function DataContainer(props) {
                             </Column>
                         </BottomList>
                         <BottomList border={"solid"}>
-                            <Number color={color.Orange[2]}>3</Number>
+                            <Number color={color.Orange[1]}>3</Number>
                             <Column>
                                 <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
                                     <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
                                 </MainDiv>
                                 <MainDiv state={"space-between"}>
@@ -54,7 +54,7 @@ export default function DataContainer(props) {
                             <Number color={color.Black}>4</Number>
                             <Column>
                                 <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
                                     <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
                                 </MainDiv>
                                 <MainDiv state={"space-between"}>
@@ -67,7 +67,7 @@ export default function DataContainer(props) {
                             <Number color={color.Black}>5</Number>
                             <Column>
                                 <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[4]} color={color.Orange[2]}>#일상</Tag>
+                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
                                     <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
                                 </MainDiv>
                                 <MainDiv state={"space-between"}>
