@@ -18,7 +18,10 @@ export default function Footer() {
                         <Data>© 2024 AiutoAnimale</Data>
                     </RowGap>
                     <RowGap>
-                        <Data>주소 : 대전광역시 유성구 가정북로 76 (대덕소프트웨어마이스터고등학교)</Data>
+                        <Div>
+                            <Data>주소 : 대전광역시 유성구 가정북로 76</Data>
+                            <Data>(대덕SW마이스터고등학교)</Data>
+                        </Div>
                         <GapContainer>
                             <GitLogo/>
                             <Data>github.com/AiutoAnimale</Data>
@@ -35,16 +38,18 @@ export default function Footer() {
     );
 }
 
-const Container = styled.header`
+const Container = styled.footer`
     padding: 40px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: ${color.White};
+    border-top: solid 1px ${color.Gray[2]};
 `;
 
 const List = styled.div`
     max-width: 885px;
+    padding: 0px 30px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -57,6 +62,13 @@ const Data = styled.div`
     font-size: 1rem;
     user-select: none;
     color: ${color.Black};
+
+    @media screen and (max-width: ${breakpoints.tabletSmall}) {
+        font-size: 0.9rem;
+    }
+    @media screen and (max-width: ${breakpoints.mobileSmall}) {
+        font-size: 0.8rem;
+    }
 `
 
 const GapContainer = styled.div`
@@ -76,6 +88,14 @@ const Border = styled.div`
     width: 1px;
     height: 25px;
     background-color: ${color.Black};
+`
+
+const Div = styled.div`
+    display: flex;
+
+    @media screen and (max-width: ${breakpoints.mobileSmall}) {
+        flex-direction: column;
+    }
 `
 
 const TextLogo = styled(LogoSVG)``;
