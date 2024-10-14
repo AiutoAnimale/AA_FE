@@ -4,6 +4,15 @@ import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
 
 export default function DataContainer(props) {
+
+    const List = [
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "1", tag: "일상", user: "초코 보호자", count: "13" },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "2", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "3", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "4", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "5", tag: "일상", user: "초코 보호자", count: "13"  },
+     ];
+
     return (
                 <Div>
                     <TextDiv>
@@ -11,71 +20,21 @@ export default function DataContainer(props) {
                         <Text color={props.color}>{props.secondText}</Text>
                     </TextDiv>
                     <Bottom>
-                        <BottomList border={"none"}>
-                            <Number color={color.Orange[1]}>1</Number>
-                            <Column>
-                                <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
-                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
-                                </MainDiv>
-                                <MainDiv state={"space-between"}>
-                                    <UserName>초코 보호자</UserName>
-                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
-                                </MainDiv>
-                            </Column>
-                        </BottomList>
-                        <BottomList border={"solid"}>
-                            <Number color={color.Orange[1]}>2</Number>
-                            <Column>
-                                <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
-                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
-                                </MainDiv>
-                                <MainDiv state={"space-between"}>
-                                    <UserName>초코 보호자</UserName>
-                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
-                                </MainDiv>
-                            </Column>
-                        </BottomList>
-                        <BottomList border={"solid"}>
-                            <Number color={color.Orange[1]}>3</Number>
-                            <Column>
-                                <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
-                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
-                                </MainDiv>
-                                <MainDiv state={"space-between"}>
-                                    <UserName>초코 보호자</UserName>
-                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
-                                </MainDiv>
-                            </Column>
-                        </BottomList>
-                        <BottomList border={"solid"}>
-                            <Number color={color.Black}>4</Number>
-                            <Column>
-                                <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
-                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
-                                </MainDiv>
-                                <MainDiv state={"space-between"}>
-                                    <UserName>초코 보호자</UserName>
-                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
-                                </MainDiv>
-                            </Column>
-                        </BottomList>
-                        <BottomList border={"solid"}>
-                            <Number color={color.Black}>5</Number>
-                            <Column>
-                                <MainDiv state={"flex-start"}>
-                                    <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#일상</Tag>
-                                    <MainText>우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ</MainText>
-                                </MainDiv>
-                                <MainDiv state={"space-between"}>
-                                    <UserName>초코 보호자</UserName>
-                                    <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 13</Tag>
-                                </MainDiv>
-                            </Column>
-                        </BottomList>
+                        {List.map((item, index) => (
+                            <BottomList border={item.number == 1 ? "none" : "solid"}>
+                                <Number color={item.number <= 3 ? color.Orange[1] : color.Black}>{item.number}</Number>
+                                <Column>
+                                    <MainDiv state={"flex-start"}>
+                                        <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#{item.tag}</Tag>
+                                        <MainText>{item.text}</MainText>
+                                    </MainDiv>
+                                    <MainDiv state={"space-between"}>
+                                        <UserName>{item.user}</UserName>
+                                        <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 {item.count}</Tag>
+                                    </MainDiv>
+                                </Column>
+                            </BottomList>
+                        ))}
                         <MoreBtn>{props.btnText}</MoreBtn>
                     </Bottom>
                 </Div>
@@ -183,10 +142,10 @@ const MainDiv = styled.div`
         width: 95%;
     }
     @media screen and (max-width: ${breakpoints.tabletSmall}) {
-        width: 90%;
+        width: 97%;
     }
     @media screen and (max-width: ${breakpoints.mobileSmall}) {
-        width: 80%;
+        width: 87%;
     }
 `
 
