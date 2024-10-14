@@ -7,6 +7,8 @@ import Button from "../../../components/Button";
 import NextButton from "../../../components/Next";
 
 export default function UserData() {
+    const [ pwState, setPwState ] = useState(false);
+    
     return (
         <>
             <Container>
@@ -16,8 +18,19 @@ export default function UserData() {
                         <NextButton onClick={() => console.log("다음")} />
                     </TextContainer>
                     <InputContainer>
-                        <Input text={"아이디"} placeholder={"아이디를 입력하세요"} type={'text'} />
-                        <Input text={"비밀번호"} placeholder={"비밀번호를 입력하세요"} type={'password'} />
+                        <Input
+                        text={"아이디"}
+                        placeholder={"아이디를 입력하세요"}
+                        type={'text'}
+                        state={'text'}
+                        />
+                        <Input
+                        text={"비밀번호"}
+                        placeholder={"비밀번호를 입력하세요"}
+                        type={pwState == true ? 'text' : 'password'}
+                        state={'password'}
+                        onClick={() => setPwState(!pwState)}
+                        />
                     </InputContainer>
                     <Button onClick={() => console.log("다음")} text={"다음"} />
                 </MainContainer>
