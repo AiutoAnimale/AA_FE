@@ -44,7 +44,7 @@ const Container = styled.footer`
     align-items: center;
     justify-content: center;
     background-color: ${color.White};
-    border-top: solid 1px ${color.Gray[2]};
+    border-top: solid 1px ${color.Gray[1]};
 `;
 
 const List = styled.div`
