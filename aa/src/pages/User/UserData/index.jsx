@@ -1,20 +1,20 @@
 import { useState } from "react";
-import { color } from "../../style/theme";
-import { breakpoints } from "../../style/device";
+import { color } from "../../../style/theme";
+import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import NextButton from "../../components/Next";
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
+import NextButton from "../../../components/Next";
 
-export default function Login() {
+export default function UserData() {
     const [ pwState, setPwState ] = useState(false);
-
+    
     return (
         <>
             <Container>
                 <MainContainer>
                     <TextContainer>
-                        <Text color={color.Black}>로그인</Text>
+                        <Text color={color.Black}>회원가입</Text>
                         <NextButton onClick={() => console.log("다음")} />
                     </TextContainer>
                     <InputContainer>
@@ -32,7 +32,7 @@ export default function Login() {
                         onClick={() => setPwState(!pwState)}
                         />
                     </InputContainer>
-                    <Button onClick={() => console.log("로그인")} text={"로그인"} />
+                    <Button onClick={() => console.log("다음")} text={"다음"} />
                 </MainContainer>
             </Container>
         </>

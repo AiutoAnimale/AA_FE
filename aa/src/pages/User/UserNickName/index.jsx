@@ -1,38 +1,24 @@
 import { useState } from "react";
-import { color } from "../../style/theme";
-import { breakpoints } from "../../style/device";
+import { color } from "../../../style/theme";
+import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import NextButton from "../../components/Next";
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
+import NextButton from "../../../components/Next";
 
-export default function Login() {
-    const [ pwState, setPwState ] = useState(false);
-
+export default function UserNickName() {
     return (
         <>
             <Container>
                 <MainContainer>
                     <TextContainer>
-                        <Text color={color.Black}>로그인</Text>
+                        <Text color={color.Black}>회원가입</Text>
                         <NextButton onClick={() => console.log("다음")} />
                     </TextContainer>
                     <InputContainer>
-                        <Input
-                        text={"아이디"}
-                        placeholder={"아이디를 입력하세요"}
-                        type={'text'}
-                        state={'text'}
-                        />
-                        <Input
-                        text={"비밀번호"}
-                        placeholder={"비밀번호를 입력하세요"}
-                        type={pwState == true ? 'text' : 'password'}
-                        state={'password'}
-                        onClick={() => setPwState(!pwState)}
-                        />
+                        <Input text={"닉네임"} placeholder={"닉네임을 입력하세요"} type={'text'} />
                     </InputContainer>
-                    <Button onClick={() => console.log("로그인")} text={"로그인"} />
+                    <Button onClick={() => console.log("다음")} text={"다음"} />
                 </MainContainer>
             </Container>
         </>
@@ -52,7 +38,7 @@ const MainContainer = styled.div`
     background-color: ${color.White};
     width: 100%;
     max-width: 455px;
-    max-height: 530px;
+    max-height: 400px;
     height: 80%;
     border: solid 1.3px ${color.Gray[1]};
     border-radius: 20px;
