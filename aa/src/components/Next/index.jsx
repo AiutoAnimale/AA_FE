@@ -2,7 +2,7 @@ import { useState } from "react";
 import { breakpoints } from "../../style/device";
 import { color } from "../../style/theme";
 import styled from "styled-components";
-import { ReactComponent as NextSVG } from "../../assets/icon/next.svg";
+import { ReactComponent as NextSVG } from "../../assets/icon/Next.svg";
 
 export default function NextButton(props) {
 
