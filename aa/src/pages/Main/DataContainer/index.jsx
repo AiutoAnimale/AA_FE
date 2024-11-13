@@ -3,6 +3,10 @@ import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
 
+import UserName from "../../../components/UserName";
+import Tag from "../../../components/Tag";
+import MainText from "../../../components/MainText";
+
 export default function DataContainer(props) {
 
     const List = [
@@ -25,12 +29,12 @@ export default function DataContainer(props) {
                                 <Number color={item.number <= 3 ? color.Orange[1] : color.Black}>{item.number}</Number>
                                 <Column>
                                     <MainDiv state={"flex-start"}>
-                                        <Tag backColor={color.Orange[3]} color={color.Orange[2]}>#{item.tag}</Tag>
-                                        <MainText>{item.text}</MainText>
+                                        <Tag type={'tag'} backColor={color.Orange[3]} color={color.Orange[2]} data={`#${item.tag}`} />
+                                        <MainText data={item.text} />
                                     </MainDiv>
                                     <MainDiv state={"space-between"}>
-                                        <UserName>{item.user}</UserName>
-                                        <Tag backColor={color.Gray[0]} color={color.Gray[7]}>댓글 {item.count}</Tag>
+                                        <UserName data={item.user} />
+                                        <Tag backColor={color.Gray[0]} color={color.Gray[7]} data={`댓글 ${item.count}`} />
                                     </MainDiv>
                                 </Column>
                             </BottomList>
@@ -109,27 +113,6 @@ const Number = styled.div`
     color: ${props => props.color};
 `
 
-const Tag = styled.div`
-    padding: 3px 7px;
-    border-radius: 5px;
-    background-color: ${props => props.backColor};
-    font-size: 0.9rem;
-    font-weight: medium;
-    color: ${props => props.color};
-    white-space: nowrap;
-    user-select: none;
-`
-
-const MainText = styled.div`
-    font-size: 1.1rem;
-    font-weight: medium;
-    color: ${color.Black};
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    user-select: none;
-`
-
 const MainDiv = styled.div`
     gap: 10px;
     width: 100%;
@@ -138,12 +121,6 @@ const MainDiv = styled.div`
     justify-content: space-between;
     justify-content: ${props => props.state};
 
-    @media screen and (min-width: ${breakpoints.tabletLarge}) {
-        width: 95%;
-    }
-    @media screen and (max-width: ${breakpoints.tabletSmall}) {
-        width: 97%;
-    }
     @media screen and (max-width: ${breakpoints.mobileSmall}) {
         width: 87%;
     }
@@ -156,11 +133,4 @@ const Column = styled.div`
     justify-content: center;
     width: 100%;
     row-gap: 10px;
-`
-
-const UserName = styled.div`
-    font-size: 1rem;
-    font-weight: medium;
-    color: ${color.Gray[8]};
-    user-select: none;
 `
