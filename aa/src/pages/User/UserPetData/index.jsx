@@ -55,6 +55,7 @@ const Container = styled.div`
     width: 90%;
     height: 100vh;
     padding: 0 5%;
+    background-color: ${color.Gray[11]};
 `;
 
 const TextLabel = styled.label`
