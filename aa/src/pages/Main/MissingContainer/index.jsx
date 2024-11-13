@@ -5,6 +5,8 @@ import styled from "styled-components";
 import MissingBackground from "../../../assets/image/MissingBackground.png";
 import { ReactComponent as SpeakerSVG } from "../../../assets/icon/MissingSpeaker.svg";
 
+import ConfirmBtn from "../../../components/ConfirmBtn";
+
 export default function MissingContainer(props) {
     return (
         <Bottom>
@@ -16,7 +18,7 @@ export default function MissingContainer(props) {
                     <Text color={color.Gray[5]} weight={'medium'} size={'1rem'}>업데이트하고 확인해보세요</Text>
                 </TextContainer>
             </BottomContainer>
-            <Btn>실종 동물 확인하러가기</Btn>
+            <ConfirmBtn text={'실종 동물 확인하러가기'} font={'16px'} />
         </Bottom>
     );
 }
@@ -64,15 +66,6 @@ const BottomContainer = styled.div`
     align-items: center;
     justify-content: center;
     row-gap: 10px;
-`
-
-const Btn = styled.button`
-    background-color: ${color.Orange[4]};
-    color: ${color.White};
-    font-size: 1rem;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: none;
 `
 
 const Speaker = styled(SpeakerSVG)``;
