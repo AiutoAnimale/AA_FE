@@ -9,7 +9,7 @@ import ContentsText from "../../components/ContentsText";
 import Title from "../../components/Title";
 
 import DataContainer from "./DataContainer";
-import CreateContainer from "./CreateContainer";
+import CreateContainer from "../../components/CreateContainer";
 
 export default function Community() {
     const [ state, setState ] = useState('일상');
@@ -17,14 +17,6 @@ export default function Community() {
     const onPressData = (item) => {
         setState(item);
     };
-
-    const List = [
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "1", tag: "일상", user: "초코 보호자", count: "13" },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "2", tag: "일상", user: "초코 보호자", count: "13"  },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "3", tag: "일상", user: "초코 보호자", count: "13"  },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "4", tag: "일상", user: "초코 보호자", count: "13"  },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "5", tag: "일상", user: "초코 보호자", count: "13"  },
-     ];
 
     const Popular = {
         text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ",
@@ -36,6 +28,7 @@ export default function Community() {
     }
 
     const TagList = [
+        { data: '전체', en: '' },
         { data: '일상', en: '' }, 
         { data: '취미', en: '' }, 
         { data: '경험', en: '' }, 
@@ -64,7 +57,10 @@ export default function Community() {
                 <Center>
                     <SelectContainer>
                         {TagList.map((item, index) => (
-                            <Title data={item.data} state={state} onPress={() => onPressData(item.data)} />
+                                <MarginDiv>
+                                    <Title data={item.data} state={state} onPress={() => onPressData(item.data)} />
+                                    <MarginBox></MarginBox>
+                                </MarginDiv>
                         ))}
                     </SelectContainer>
                     <PostContainer>
@@ -84,7 +80,7 @@ export default function Community() {
                     <PostContainer>
                         <BoldText>커뮤니티</BoldText>
                         <MediumText>서로의 이야기를 나눠봐요</MediumText>
-                        <DataContainer data={List} />
+                        <DataContainer />
                     </PostContainer>
                 </Center>
             </Container>
@@ -159,7 +155,6 @@ const PostBottom = styled.div`
 
 const SelectContainer = styled.div`
     display: flex;
-    gap: 18px;
     border-bottom: solid 1px ${color.Gray[1]};
     overflow-x: scroll;
     white-space: nowrap;
@@ -167,3 +162,12 @@ const SelectContainer = styled.div`
         display: none;
     }
 `;
+
+const MarginDiv = styled.div`
+    display: flex;
+`
+
+const MarginBox = styled.div`
+    width: 18px;
+    height: 46px;
+`
