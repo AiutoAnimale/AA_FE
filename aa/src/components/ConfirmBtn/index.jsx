@@ -2,30 +2,29 @@ import { useState } from "react";
 import { breakpoints } from "../../style/device";
 import { color } from "../../style/theme";
 import styled from "styled-components";
-import { ReactComponent as NextSVG } from "../../assets/icon/Next.svg";
 
-export default function NextButton(props) {
+export default function ConfirmBtn(props) {
 
     return (
-        <Btn onClick={props.onClick}>
-            <Next />
-        </Btn>
+        <Btn onClick={props.onClick} font={props.font}>{props.text}</Btn>
     );
 }
 
 const Btn = styled.button`
-    width: 10%;
-    height: 40px;
+    min-width: 135px;
+    min-height: 40px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${color.Orange[3]};
+    font-size: ${props=>props.font};
+    font-weight: medium;
+    color: ${color.White};
+    background-color: ${color.Orange[4]};
 
     &:hover {
         cursor: pointer;
     }
 `;
-
-const Next = styled(NextSVG)``;
