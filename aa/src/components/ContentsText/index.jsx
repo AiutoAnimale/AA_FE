@@ -6,7 +6,7 @@ import styled from "styled-components";
 export default function ContentsText(props) {
 
     return (
-        <Text>{props.data}</Text>
+        <Text size={props.font}>{props.data}</Text>
     );
 }
 
@@ -14,6 +14,6 @@ export default function ContentsText(props) {
 const Text = styled.div`
     font-style: medium;
     font-weight: 400;
-    font-size: 16px;
+    font-size: ${props=>props.size};
     color: ${color.Gray[5]};
 `
