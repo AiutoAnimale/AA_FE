@@ -9,14 +9,6 @@ import MainText from "../../../components/MainText";
 
 export default function DataContainer(props) {
 
-    const List = [
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "1", tag: "일상", user: "초코 보호자", count: "13" },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "2", tag: "일상", user: "초코 보호자", count: "13"  },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "3", tag: "일상", user: "초코 보호자", count: "13"  },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "4", tag: "일상", user: "초코 보호자", count: "13"  },
-        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "5", tag: "일상", user: "초코 보호자", count: "13"  },
-     ];
-
     return (
                 <Div>
                     <TextDiv>
@@ -24,7 +16,7 @@ export default function DataContainer(props) {
                         <Text color={props.color}>{props.secondText}</Text>
                     </TextDiv>
                     <Bottom>
-                        {List.map((item, index) => (
+                        {props.data.map((item, index) => (
                             <BottomList border={item.number == 1 ? "none" : "solid"}>
                                 <Number color={item.number <= 3 ? color.Orange[1] : color.Black}>{item.number}</Number>
                                 <Column>
