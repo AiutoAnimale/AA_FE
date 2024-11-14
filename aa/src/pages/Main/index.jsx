@@ -52,6 +52,7 @@ const Container = styled.div`
     width: 100%;
     row-gap: 40px;
     padding-bottom: 80px;
+    background-color: ${color.Gray[11]};
 `;
 
 const BannerDiv = styled.div`
