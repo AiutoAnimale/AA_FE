@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { color } from "../../../style/theme";
-import { breakpoints } from "../../../style/device";
+import { color } from "../../style/theme";
+import { breakpoints } from "../../style/device";
 import styled from "styled-components";
 
 import ConfirmBtn from "../../../components/ConfirmBtn";
