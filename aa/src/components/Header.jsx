@@ -10,7 +10,7 @@ export default function Header() {
     const [isLogin, setIsLogin] = useState();
 
     const MainList = [
-        { name: "실종", path: "/main" },
+        { name: "실종", path: "/missing" },
         { name: "커뮤니티", path: "/community" },
         { name: "지식톡톡", path: "/knowing" },
      ];
