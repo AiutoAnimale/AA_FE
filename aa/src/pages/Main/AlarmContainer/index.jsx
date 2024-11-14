@@ -8,17 +8,10 @@ import MainText from "../../../components/MainText";
 
 export default function AlarmContainer(props) {
 
-    const List = [
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "1", tag: "일상", user: "운영자", count: "13" },
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "2", tag: "일상", user: "운영자", count: "13"  },
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "3", tag: "일상", user: "운영자", count: "13"  },
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "4", tag: "일상", user: "운영자", count: "13"  },
-     ];
-
     return (
         <Bottom>
             <Text color={color.Black}>소식</Text>
-            {List.map((item, index) => (
+            {props.data.map((item, index) => (
                 <BottomList border={item.number=='1' ? "none" : "solid"}>
                     <Tag type={'tag'} backColor={color.Blue[1]} color={color.Blue[0]} data={item.user} />
                     <MainText data={item.text} size={'16px'}/>

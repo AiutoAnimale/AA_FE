@@ -10,6 +10,21 @@ import MissingContainer from "./MissingContainer";
 
 export default function Main() {
 
+    const List = [
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "1", tag: "일상", user: "초코 보호자", count: "13" },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "2", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "3", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "4", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "5", tag: "일상", user: "초코 보호자", count: "13"  },
+     ];
+
+     const AlarmList = [
+        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "1", tag: "일상", user: "운영자", count: "13" },
+        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "2", tag: "일상", user: "운영자", count: "13"  },
+        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "3", tag: "일상", user: "운영자", count: "13"  },
+        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "4", tag: "일상", user: "운영자", count: "13"  },
+     ];
+
     return (
         <>
             <Container>
@@ -30,14 +45,14 @@ export default function Main() {
                         <Temp>24°</Temp>
                     </BannerInnerDiv>
                 </BannerDiv>
-                <DataContainer firstText="몽글몽글" secondText="커뮤니티" color={color.Orange[1]} btnText="커뮤니티 더보기" />
+                <DataContainer data={List} firstText="몽글몽글" secondText="커뮤니티" color={color.Orange[1]} btnText="커뮤니티 더보기" />
                 <EventDiv>
                     <TempText font={'1.4rem'}>3월 13일 국제 강아지의 날 맞이 </TempText>
                     <TempText font={'1.5rem'}>강아지숲, 반려견 입장료 50% 할인이벤트</TempText>
                 </EventDiv>
-                <DataContainer firstText="지식" secondText="톡톡" color={color.Blue[0]} btnText="지식톡톡 더보기" />
+                <DataContainer data={List} firstText="지식" secondText="톡톡" color={color.Blue[0]} btnText="지식톡톡 더보기" />
                 <Div>
-                    <AlarmContainer />
+                    <AlarmContainer data={AlarmList} />
                     <MissingContainer />
                 </Div>
             </Container>
