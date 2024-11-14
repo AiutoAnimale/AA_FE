@@ -9,7 +9,7 @@ import ContentsText from "../../components/ContentsText";
 import Title from "../../components/Title";
 
 import DataContainer from "./DataContainer";
-import CreateContainer from "./CreateContainer";
+import CreateContainer from "../../components/CreateContainer";
 
 export default function Community() {
     const [ state, setState ] = useState('일상');
@@ -28,6 +28,7 @@ export default function Community() {
     }
 
     const TagList = [
+        { data: '전체', en: '' },
         { data: '일상', en: '' }, 
         { data: '취미', en: '' }, 
         { data: '경험', en: '' }, 
@@ -56,7 +57,10 @@ export default function Community() {
                 <Center>
                     <SelectContainer>
                         {TagList.map((item, index) => (
-                            <Title data={item.data} state={state} onPress={() => onPressData(item.data)} />
+                                <MarginDiv>
+                                    <Title data={item.data} state={state} onPress={() => onPressData(item.data)} />
+                                    <MarginBox></MarginBox>
+                                </MarginDiv>
                         ))}
                     </SelectContainer>
                     <PostContainer>
@@ -151,7 +155,6 @@ const PostBottom = styled.div`
 
 const SelectContainer = styled.div`
     display: flex;
-    gap: 18px;
     border-bottom: solid 1px ${color.Gray[1]};
     overflow-x: scroll;
     white-space: nowrap;
@@ -159,3 +162,12 @@ const SelectContainer = styled.div`
         display: none;
     }
 `;
+
+const MarginDiv = styled.div`
+    display: flex;
+`
+
+const MarginBox = styled.div`
+    width: 18px;
+    height: 46px;
+`

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { color } from "../../../style/theme";
-import { breakpoints } from "../../../style/device";
+import { color } from "../../style/theme";
+import { breakpoints } from "../../style/device";
 import styled from "styled-components";
 
-import ConfirmBtn from "../../../components/ConfirmBtn";
+import ConfirmBtn from "../../components/ConfirmBtn";
 
 export default function CreateContainer(props) {
 
@@ -25,7 +25,7 @@ const Div = styled.div`
     height: 150px;
     background-color: ${color.White};
     position: fixed;
-    left: 80vw;
+    right: 17vw;
     top: 15%;
     border-radius: 10px;
     border: solid 1px ${color.Gray[1]};
