@@ -1,3 +1,4 @@
+//Knowing
 import { useState } from "react";
 import styled from "styled-components";
 import { color } from "../../style/theme";
@@ -122,12 +123,14 @@ const BoldText = styled.div`
     font-size: 22px;
     font-weight: bolder;
     color: ${color.Black};
+    user-select: none;
 `
 
 const MediumText = styled.div`
     font-size: 17px;
     font-weight: medium;
     color: ${color.Gray[4]};
+    user-select: none;
 `
 
 const PostContainer = styled.div`
