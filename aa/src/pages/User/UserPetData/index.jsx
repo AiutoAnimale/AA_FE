@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import NextButton from "../../../components/Next";
 import Select from "../../../components/Select";
 
 export default function UserPetData() {
+    const navigate = useNavigate();
     const [ state, setState ] = useState('');
+
+    const onClickNext = () => {
+        navigate("/login");
+    }
 
     return (
         <>
@@ -16,7 +23,7 @@ export default function UserPetData() {
                 <MainContainer>
                     <TextContainer>
                         <Text color={color.Black}>회원가입</Text>
-                        <NextButton onClick={() => console.log("다음")} />
+                        <NextButton onClick={() => onClickNext()} />
                     </TextContainer>
                     <InputContainer>
                         <Input text={"반려동물 이름"} placeholder={"반려동물의 이름을 입력하세요"} type={'text'} />
@@ -41,7 +48,7 @@ export default function UserPetData() {
                         <Input text={"생년월일"} placeholder={"생년월일을 선택하세요"} type={'text'} />
                         <Input text={"지역"} placeholder={"사는 지역을 입력하세요 예) 서울특별시"} type={'text'} />
                     </InputContainer>
-                    <Button onClick={() => console.log("다음")} text={"다음"} />
+                    <Button onClick={() => onClickNext()} text={"다음"} />
                 </MainContainer>
             </Container>
         </>

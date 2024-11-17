@@ -1,24 +1,32 @@
 import { useState } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import NextButton from "../../../components/Next";
 
 export default function UserNickName() {
+    const navigate = useNavigate();
+
+    const onClickNext = () => {
+        navigate("/signupPet");
+    }
+
     return (
         <>
             <Container>
                 <MainContainer>
                     <TextContainer>
                         <Text color={color.Black}>회원가입</Text>
-                        <NextButton onClick={() => console.log("다음")} />
+                        <NextButton onClick={() => onClickNext()} />
                     </TextContainer>
                     <InputContainer>
                         <Input text={"닉네임"} placeholder={"닉네임을 입력하세요"} type={'text'} />
                     </InputContainer>
-                    <Button onClick={() => console.log("다음")} text={"다음"} />
+                    <Button onClick={() => onClickNext()} text={"다음"} />
                 </MainContainer>
             </Container>
         </>
