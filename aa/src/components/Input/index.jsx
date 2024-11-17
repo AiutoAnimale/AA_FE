@@ -13,7 +13,7 @@ export default function Input(props) {
                 <PwConatiner>
                     <InputPassword placeholder={props.placeholder} type={props.type} />
                     <ViewCotainer onClick={props.onClick}>
-                      <ViewPw />
+                      { props.type=='text' ? <></> : <ViewPw /> }
                     </ViewCotainer>
                 </PwConatiner>
             ) : (
@@ -81,7 +81,7 @@ const PwConatiner = styled.div`
     &:hover {
         cursor: pointer;
     }
-    &:focus {
+    &:focus-within {
         outline: none;
         border: solid 1px ${color.Orange[1]};
     }
@@ -104,7 +104,7 @@ const InputPassword = styled.input`
     }
 `
 
-const ViewCotainer = styled.button`
+const ViewCotainer = styled.div`
     width: 14%;
     border-radius: 5px;
     display: flex;
