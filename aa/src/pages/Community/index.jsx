@@ -12,11 +12,19 @@ import DataContainer from "./DataContainer";
 import CreateContainer from "../../components/CreateContainer";
 
 export default function Community() {
-    const [ state, setState ] = useState('일상');
+    const [ state, setState ] = useState('전체');
 
     const onPressData = (item) => {
         setState(item);
     };
+
+    const List = [
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "1", tag: "일상", user: "초코 보호자", count: "13" },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "2", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "3", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "4", tag: "일상", user: "초코 보호자", count: "13"  },
+        { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "5", tag: "일상", user: "초코 보호자", count: "13"  },
+     ];
 
     const Popular = {
         text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ",
@@ -80,7 +88,7 @@ export default function Community() {
                     <PostContainer>
                         <BoldText>커뮤니티</BoldText>
                         <MediumText>서로의 이야기를 나눠봐요</MediumText>
-                        <DataContainer />
+                        <DataContainer data={List} />
                     </PostContainer>
                 </Center>
             </Container>
@@ -110,12 +118,14 @@ const BoldText = styled.div`
     font-size: 22px;
     font-weight: bolder;
     color: ${color.Black};
+    user-select: none;
 `
 
 const MediumText = styled.div`
     font-size: 17px;
     font-weight: medium;
     color: ${color.Gray[4]};
+    user-select: none;
 `
 
 const PostContainer = styled.div`
