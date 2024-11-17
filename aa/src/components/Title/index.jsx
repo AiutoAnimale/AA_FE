@@ -1,3 +1,4 @@
+//Title
 import { useState } from "react";
 import { breakpoints } from "../../style/device";
 import { color } from "../../style/theme";
@@ -24,4 +25,5 @@ const TitleContainer = styled.button`
     border: none;
     color: ${props=>props.color};
     border-bottom: ${props=>props.outline} 2px ${color.Black};
+    user-select: none;
 `

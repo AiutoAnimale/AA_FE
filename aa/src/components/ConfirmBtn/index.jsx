@@ -23,6 +23,7 @@ const Btn = styled.button`
     font-weight: medium;
     color: ${color.White};
     background-color: ${color.Orange[4]};
+    user-select: none;
 
     &:hover {
         cursor: pointer;
