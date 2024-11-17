@@ -1,13 +1,21 @@
-import { useState } from "react";
+//Auth
+import { useEffect, useState } from "react";
 import { color } from "../../style/theme";
 import { breakpoints } from "../../style/device";
+import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import NextButton from "../../components/Next";
 
 export default function Login() {
+    const navigate = useNavigate();
     const [ pwState, setPwState ] = useState(false);
+
+    const onClickLogin = () => {
+        navigate("/main");
+    }
 
     return (
         <>
@@ -15,7 +23,7 @@ export default function Login() {
                 <MainContainer>
                     <TextContainer>
                         <Text color={color.Black}>로그인</Text>
-                        <NextButton onClick={() => console.log("다음")} />
+                        <NextButton onClick={() => onClickLogin()} />
                     </TextContainer>
                     <InputContainer>
                         <Input
@@ -32,7 +40,7 @@ export default function Login() {
                         onClick={() => setPwState(!pwState)}
                         />
                     </InputContainer>
-                    <Button onClick={() => console.log("로그인")} text={"로그인"} />
+                    <Button onClick={() => onClickLogin()} text={"로그인"} />
                 </MainContainer>
             </Container>
         </>
