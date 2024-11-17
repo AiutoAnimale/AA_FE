@@ -71,35 +71,18 @@ const Center = styled.div`
     background-color: ${color.White};
 `;
 
-const SelectContainer = styled.div`
-    display: flex;
-    border-bottom: solid 1px ${color.Gray[1]};
-    overflow-x: scroll;
-    white-space: nowrap;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-`;
-
-const MarginDiv = styled.div`
-    display: flex;
-`
-
-const MarginBox = styled.div`
-    width: 18px;
-    height: 46px;
-`
-
 const BoldText = styled.div`
     font-size: 22px;
     font-weight: bolder;
     color: ${color.Black};
+    user-select: none;
 `
 
 const MediumText = styled.div`
     font-size: 17px;
     font-weight: medium;
     color: ${color.Gray[4]};
+    user-select: none;
 `
 
 const PostContainer = styled.div`
