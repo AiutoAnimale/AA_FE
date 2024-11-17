@@ -37,4 +37,5 @@ const Text = styled.div`
     font-weight: 400;
     text-align: center;
     letter-spacing: -1.09012px;
+    user-select: none;
 `

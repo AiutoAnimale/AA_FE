@@ -12,7 +12,7 @@ import DataContainer from "./DataContainer";
 import CreateContainer from "../../components/CreateContainer";
 
 export default function Community() {
-    const [ state, setState ] = useState('일상');
+    const [ state, setState ] = useState('전체');
 
     const onPressData = (item) => {
         setState(item);
@@ -118,12 +118,14 @@ const BoldText = styled.div`
     font-size: 22px;
     font-weight: bolder;
     color: ${color.Black};
+    user-select: none;
 `
 
 const MediumText = styled.div`
     font-size: 17px;
     font-weight: medium;
     color: ${color.Gray[4]};
+    user-select: none;
 `
 
 const PostContainer = styled.div`
