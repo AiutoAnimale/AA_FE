@@ -1,3 +1,4 @@
+//Main/Missing
 import { useState } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
@@ -18,7 +19,7 @@ export default function MissingContainer(props) {
                     <Text color={color.Gray[5]} weight={'medium'} size={'1rem'}>업데이트하고 확인해보세요</Text>
                 </TextContainer>
             </BottomContainer>
-            <ConfirmBtn text={'실종 동물 확인하러가기'} font={'16px'} />
+            <ConfirmBtn text={'실종 동물 확인하러가기'} font={'16px'} onClick={props.event} />
         </Bottom>
     );
 }

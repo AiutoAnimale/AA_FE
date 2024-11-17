@@ -1,14 +1,17 @@
+//Main
 import { useState } from "react";
 import MainBackground from "../../assets/image/MainBackground.png";
 import Event from "../../assets/image/Event.png";
 import { color } from "../../style/theme";
 import { breakpoints } from "../../style/device";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DataContainer from "./DataContainer";
 import AlarmContainer from "./AlarmContainer";
 import MissingContainer from "./MissingContainer";
 
 export default function Main() {
+    const navigate = useNavigate();
 
     const List = [
         { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "1", tag: "일상", user: "초코 보호자", count: "13" },
@@ -24,6 +27,18 @@ export default function Main() {
         { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "3", tag: "일상", user: "운영자", count: "13"  },
         { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "4", tag: "일상", user: "운영자", count: "13"  },
      ];
+
+     const moreCommunity = () => {
+        navigate("/community");
+     }
+
+     const moreKnowing = () => {
+        navigate("/knowing");
+     }
+
+     const moreMissing = () => {
+        navigate("/missing");
+     }
 
     return (
         <>
@@ -45,15 +60,15 @@ export default function Main() {
                         <Temp>24°</Temp>
                     </BannerInnerDiv>
                 </BannerDiv>
-                <DataContainer data={List} firstText="몽글몽글" secondText="커뮤니티" color={color.Orange[1]} btnText="커뮤니티 더보기" />
+                <DataContainer data={List} firstText="몽글몽글" secondText="커뮤니티" color={color.Orange[1]} btnText="커뮤니티 더보기" event={moreCommunity} />
                 <EventDiv>
                     <TempText font={'1.4rem'}>3월 13일 국제 강아지의 날 맞이 </TempText>
                     <TempText font={'1.5rem'}>강아지숲, 반려견 입장료 50% 할인이벤트</TempText>
                 </EventDiv>
-                <DataContainer data={List} firstText="지식" secondText="톡톡" color={color.Blue[0]} btnText="지식톡톡 더보기" />
+                <DataContainer data={List} firstText="지식" secondText="톡톡" color={color.Blue[0]} btnText="지식톡톡 더보기" event={moreKnowing} />
                 <Div>
                     <AlarmContainer data={AlarmList} />
-                    <MissingContainer />
+                    <MissingContainer event={moreMissing} />
                 </Div>
             </Container>
         </>
@@ -116,6 +131,7 @@ const BannerTag = styled.div`
     font-size: 0.9rem;
     border: solid 1.2px ${color.Orange[0]};
     color: ${color.Orange[0]};
+    user-select: none;
 `
 
 const TempContainer = styled.div`
@@ -125,12 +141,14 @@ const TempContainer = styled.div`
     padding: 5px 15px;
     border-radius: 5px;
     background-color: ${color.Gray[9]};
+    user-select: none;
 `
 
 const TempText = styled.div`
     font-size: ${props => props.font};
     font-weight: bolder;
     color: ${color.White};
+    user-select: none;
 `
 
 const Temp = styled.div`
@@ -138,6 +156,7 @@ const Temp = styled.div`
     font-weight: medium;
     color: ${color.White};
     width: 40%;
+    user-select: none;
 
     @media screen and (max-width: ${breakpoints.mobileSmall}) {
         display: none;
@@ -148,6 +167,7 @@ const Ment = styled.div`
     font-size: 0.9rem;
     font-weight: medium;
     color: ${color.Gray[5]};
+    user-select: none;
 
     @media screen and (max-width: ${breakpoints.mobileSmall}) {
         font-size: 0.8rem;

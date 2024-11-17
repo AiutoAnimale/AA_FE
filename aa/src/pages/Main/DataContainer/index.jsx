@@ -1,3 +1,4 @@
+//Main/DataContainer
 import { useState } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
@@ -31,7 +32,7 @@ export default function DataContainer(props) {
                                 </Column>
                             </BottomList>
                         ))}
-                        <MoreBtn>{props.btnText}</MoreBtn>
+                        <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
                     </Bottom>
                 </Div>
     );
@@ -103,6 +104,7 @@ const Number = styled.div`
     font-size: 1.3rem;
     font-weight: medium;
     color: ${props => props.color};
+    user-select: none;
 `
 
 const MainDiv = styled.div`
