@@ -11,9 +11,26 @@ import NextButton from "../../../components/Next";
 export default function UserData() {
     const navigate = useNavigate();
     const [ pwState, setPwState ] = useState(false);
+    const [ signupData, setSignupData ] = useState({
+		userid : "",
+		userpw : "",
+		nickname : "",
+		pet_name : "",
+		pet_sex : "",
+		species : "",
+		pet_birth : "",
+		region : "",
+    });
+    
+    const handleInputChange = (text, field) => {
+        setSignupData(prevData => ({
+          ...prevData,
+          [field]: text
+        }));
+    }
 
     const onClickNext = () => {
-        navigate("/signupNick");
+        navigate("/signupNick", { state: { data: signupData } });
     }
     
     return (
@@ -30,6 +47,7 @@ export default function UserData() {
                         placeholder={"아이디를 입력하세요"}
                         type={'text'}
                         state={'text'}
+                        onGetText={(text) => handleInputChange(text, "userid")}
                         />
                         <Input
                         text={"비밀번호"}
@@ -37,6 +55,7 @@ export default function UserData() {
                         type={pwState == true ? 'text' : 'password'}
                         state={'password'}
                         onClick={() => setPwState(!pwState)}
+                        onGetText={(text) => handleInputChange(text, "userpw")}
                         />
                     </InputContainer>
                     <Button onClick={() => onClickNext()} text={"다음"} />

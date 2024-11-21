@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from "styled-components";
 
 import Input from "../../../components/Input";
@@ -11,9 +11,35 @@ import Select from "../../../components/Select";
 
 export default function UserPetData() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [ signupData, setSignupData ] = useState();
     const [ state, setState ] = useState('');
 
+    useEffect(() => {
+        setSignupData(location.state.data);
+    }, []);
+
+    useEffect(() => {
+        console.log(signupData);
+    }, [signupData])
+
+    useEffect(() => {
+        if(state == '여아') {
+            handleInputChange('female', "pet_sex");
+        } else {
+            handleInputChange('male', "pet_sex");
+        }
+    }, [state])
+
+    const handleInputChange = (text, field) => {
+        setSignupData(prevData => ({
+          ...prevData,
+          [field]: text
+        }));
+    }
+
     const onClickNext = () => {
+        console.log(signupData);
         navigate("/login");
     }
 
@@ -27,8 +53,18 @@ export default function UserPetData() {
                     </TextContainer>
                     <TextLabel color={color.Orange[4]} size={'15px'} bold={'medium'}>반려동물 정보 작성</TextLabel>
                     <InputContainer>
-                        <Input text={"반려동물 이름"} placeholder={"반려동물의 이름을 입력하세요"} type={'text'} />
-                        <Input text={"상세 종"} placeholder={"상세 종을 선택하세요"} type={'text'} />
+                        <Input
+                        text={"반려동물 이름"}
+                        placeholder={"반려동물의 이름을 입력하세요"}
+                        type={'text'}
+                        onGetText={(text) => handleInputChange(text, "pet_name")}
+                        />
+                        <Input
+                        text={"상세 종"}
+                        placeholder={"상세 종을 선택하세요"}
+                        type={'text'}
+                        onGetText={(text) => handleInputChange(text, "species")}
+                        />
                         <LabelContainer>
                             <TextLabel color={color.Black} size={'1rem'} bold={'bolder'}>성별</TextLabel>
                             <SelectContainer>
@@ -46,10 +82,20 @@ export default function UserPetData() {
                                 />
                             </SelectContainer>
                         </LabelContainer>
-                        <Input text={"생년월일"} placeholder={"생년월일을 선택하세요"} type={'text'} />
-                        <Input text={"지역"} placeholder={"사는 지역을 입력하세요 예) 서울특별시"} type={'text'} />
+                        <Input
+                        text={"생년월일"}
+                        placeholder={"생년월일을 선택하세요"}
+                        type={'text'}
+                        onGetText={(text) => handleInputChange(text, "pet_birth")}
+                        />
+                        <Input
+                        text={"지역"}
+                        placeholder={"사는 지역을 입력하세요 예) 서울특별시"}
+                        type={'text'}
+                        onGetText={(text) => handleInputChange(text, "region")}
+                        />
                     </InputContainer>
-                    <Button onClick={() => onClickNext()} text={"다음"} />
+                    <Button onClick={() => onClickNext()} text={"회원가입"} />
                 </MainContainer>
             </Container>
         </>

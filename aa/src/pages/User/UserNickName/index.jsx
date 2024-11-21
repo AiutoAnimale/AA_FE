@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from "styled-components";
 
 import Input from "../../../components/Input";
@@ -10,9 +10,26 @@ import NextButton from "../../../components/Next";
 
 export default function UserNickName() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [ signupData, setSignupData ] = useState();
+
+    useEffect(() => {
+        setSignupData(location.state.data);
+    }, []);
+
+    useEffect(() => {
+        console.log(signupData);
+    }, [signupData])
+
+    const handleInputChange = (text, field) => {
+        setSignupData(prevData => ({
+          ...prevData,
+          [field]: text
+        }));
+    }
 
     const onClickNext = () => {
-        navigate("/signupPet");
+        navigate("/signupPet", { state: { data: signupData } });
     }
 
     return (
@@ -24,7 +41,12 @@ export default function UserNickName() {
                         <NextButton onClick={() => onClickNext()} />
                     </TextContainer>
                     <InputContainer>
-                        <Input text={"닉네임"} placeholder={"닉네임을 입력하세요"} type={'text'} />
+                        <Input
+                        text={"닉네임"}
+                        placeholder={"닉네임을 입력하세요"}
+                        type={'text'}
+                        onGetText={(text) => handleInputChange(text, "nickname")}
+                        />
                     </InputContainer>
                     <Button onClick={() => onClickNext()} text={"다음"} />
                 </MainContainer>
