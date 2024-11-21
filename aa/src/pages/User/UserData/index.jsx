@@ -53,7 +53,7 @@ const Container = styled.div`
     width: 90%;
     height: 100vh;
     padding: 0 5%;
-    background-color: ${color.Gray[11]};
+    background-color: ${color.Gray[0]};
 `;
 
 const MainContainer = styled.div`
@@ -62,17 +62,17 @@ const MainContainer = styled.div`
     max-width: 455px;
     max-height: 530px;
     height: 80%;
-    border: solid 1.3px ${color.Gray[1]};
+    border: solid 1.3px ${color.Gray[2]};
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 `
 
 const Text = styled.div`
     padding: 10px 0px;
-    font-size: 2rem;
+    font-size: 39px;
     font-weight: bolder;
     color: ${props => props.color};
     user-select: none;
@@ -87,9 +87,8 @@ const TextContainer = styled.div`
 
 const InputContainer = styled.div`
     width: 80%;
-    height: 40%;
+    height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    row-gap: 20px;
+    justify-content: space-around;
 `
