@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { breakpoints } from "../../style/device";
 import { color } from "../../style/theme";
 import styled from "styled-components";
@@ -6,19 +6,28 @@ import { ReactComponent as ViewPwShowSVG } from "../../assets/icon/ViewPwShow.sv
 import { ReactComponent as ViewPwSVG } from "../../assets/icon/ViewPw.svg";
 
 export default function Input(props) {
+    const [value, setValue] = useState();
+
+    const onChangeData = (e) => {
+        setValue(e.target.value);
+      }
+    
+    useEffect(() => {
+        props.onGetText(value);
+    }, [value]);
 
     return (
         <Container>
             <Text>{props.text}</Text>
             {props.state == 'password' ? (
                 <PwConatiner>
-                    <InputPassword placeholder={props.placeholder} type={props.type} />
+                    <InputPassword placeholder={props.placeholder} type={props.type} onChange={onChangeData} />
                     <ViewCotainer onClick={props.onClick}>
                       { props.type=='text' ? <ViewPwShow /> : <ViewPw /> }
                     </ViewCotainer>
                 </PwConatiner>
             ) : (
-                <InputContainer placeholder={props.placeholder} type={props.type} />
+                <InputContainer placeholder={props.placeholder} type={props.type} onChange={onChangeData} />
             )}
             <ErrorText>{props.error}</ErrorText>
         </Container>

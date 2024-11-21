@@ -11,6 +11,17 @@ import NextButton from "../../components/Next";
 export default function Login() {
     const navigate = useNavigate();
     const [ pwState, setPwState ] = useState(false);
+    const [ loginData, setLoginData ] = useState({
+        userid: "",
+        userpw: "",
+    });
+    
+    const handleInputChange = (text, field) => {
+        setLoginData(prevData => ({
+          ...prevData,
+          [field]: text
+        }));
+    }
 
     const onClickLogin = () => {
         navigate("/");
@@ -34,6 +45,7 @@ export default function Login() {
                         placeholder={"아이디를 입력하세요"}
                         type={'text'}
                         state={'text'}
+                        onGetText={(text) => handleInputChange(text, "userid")}
                         />
                         <Input
                         text={"비밀번호"}
@@ -41,6 +53,7 @@ export default function Login() {
                         type={pwState == true ? 'text' : 'password'}
                         state={'password'}
                         onClick={() => setPwState(!pwState)}
+                        onGetText={(text) => handleInputChange(text, "userpw")}
                         />
                     </InputContainer>
                     <Button onClick={() => onClickLogin()} text={"로그인"} />
