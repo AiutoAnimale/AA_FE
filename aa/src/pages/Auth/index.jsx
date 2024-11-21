@@ -1,4 +1,3 @@
-//Auth
 import { useEffect, useState } from "react";
 import { color } from "../../style/theme";
 import { breakpoints } from "../../style/device";
@@ -14,7 +13,11 @@ export default function Login() {
     const [ pwState, setPwState ] = useState(false);
 
     const onClickLogin = () => {
-        navigate("/main");
+        navigate("/");
+    }
+
+    const onClickSignup = () => {
+        navigate("/signupdata");
     }
 
     return (
@@ -41,6 +44,7 @@ export default function Login() {
                         />
                     </InputContainer>
                     <Button onClick={() => onClickLogin()} text={"로그인"} />
+                    <Linked><Linking onClick={() => onClickSignup()}>회원가입</Linking> 하러가기</Linked>
                 </MainContainer>
             </Container>
         </>
@@ -54,7 +58,7 @@ const Container = styled.div`
     width: 90%;
     height: 100vh;
     padding: 0 5%;
-    background-color: ${color.Gray[11]};
+    background-color: ${color.Gray[0]};
 `;
 
 const MainContainer = styled.div`
@@ -63,17 +67,17 @@ const MainContainer = styled.div`
     max-width: 455px;
     max-height: 530px;
     height: 80%;
-    border: solid 1.3px ${color.Gray[1]};
+    border: solid 1.3px ${color.Gray[2]};
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 `
 
 const Text = styled.div`
     padding: 10px 0px;
-    font-size: 2rem;
+    font-size: 39px;
     font-weight: bolder;
     color: ${props => props.color};
     user-select: none;
@@ -88,9 +92,28 @@ const TextContainer = styled.div`
 
 const InputContainer = styled.div`
     width: 80%;
-    height: 40%;
+    height: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+`
+
+const Linking = styled.div`
+    font-size: 18px;
+    font-weight: medium;
+    color: ${color.Orange[5]};
+    border-bottom: solid 1px ${color.Orange[5]};
+
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+const Linked = styled.div`
+    font-size: 18px;
+    font-weight: medium;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    row-gap: 20px;
+    gap: 5px;
 `
