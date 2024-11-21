@@ -2,6 +2,7 @@ import { useState } from "react";
 import { breakpoints } from "../../style/device";
 import { color } from "../../style/theme";
 import styled from "styled-components";
+import { ReactComponent as ViewPwShowSVG } from "../../assets/icon/ViewPwShow.svg";
 import { ReactComponent as ViewPwSVG } from "../../assets/icon/ViewPw.svg";
 
 export default function Input(props) {
@@ -13,7 +14,7 @@ export default function Input(props) {
                 <PwConatiner>
                     <InputPassword placeholder={props.placeholder} type={props.type} />
                     <ViewCotainer onClick={props.onClick}>
-                      { props.type=='text' ? <></> : <ViewPw /> }
+                      { props.type=='text' ? <ViewPwShow /> : <ViewPw /> }
                     </ViewCotainer>
                 </PwConatiner>
             ) : (
@@ -31,7 +32,7 @@ const Container = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    row-gap: 5px;
+    row-gap: 10px;
 `
 
 const Text = styled.label`
@@ -44,13 +45,13 @@ const Text = styled.label`
 const ErrorText = styled.div`
     font-size: 0.8rem;
     font-weight: 500;
-    color: ${color.Red};
+    color: ${color.Orange[4]};
     user-select: none;
 `
 
 const InputContainer = styled.input`
     width: 94%;
-    height: 50%;
+    height: 54px;
     padding: 0 3%;
     border: solid 1px ${color.Gray[1]};
     border-radius: 5px;
@@ -65,13 +66,13 @@ const InputContainer = styled.input`
     }
     &:focus {
         outline: none;
-        border: solid 1px ${color.Orange[1]};
+        border: solid 1px ${color.Orange[4]};
     }
 `;
 
 const PwConatiner = styled.div`
     width: 100%;
-    height: 50%;
+    height: 54px;
     border: solid 1px ${color.Gray[1]};
     border-radius: 5px;
     display: flex;
@@ -83,7 +84,7 @@ const PwConatiner = styled.div`
     }
     &:focus-within {
         outline: none;
-        border: solid 1px ${color.Orange[1]};
+        border: solid 1px ${color.Orange[4]};
     }
 `
 
@@ -110,7 +111,7 @@ const ViewCotainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: ${color.White};
     border: none;
 
     &:hover {
@@ -119,3 +120,4 @@ const ViewCotainer = styled.div`
 `
 
 const ViewPw = styled(ViewPwSVG)``;
+const ViewPwShow = styled(ViewPwShowSVG)``;

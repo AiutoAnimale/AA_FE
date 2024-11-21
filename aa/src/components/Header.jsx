@@ -12,7 +12,6 @@ export default function Header() {
     const MainList = [
         { name: "실종", path: "/missing" },
         { name: "커뮤니티", path: "/community" },
-        { name: "지식톡톡", path: "/knowing" },
      ];
 
     return (
@@ -71,7 +70,7 @@ const DataContainer = styled.div`
 
 const Data = styled.button`
     background-color: ${color.White};
-    color: ${color.Black};
+    color: ${color.Gray[8]};
     border: none;
     font-size: 1rem;
 

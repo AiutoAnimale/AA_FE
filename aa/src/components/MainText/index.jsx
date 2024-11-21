@@ -12,7 +12,7 @@ export default function MainText(props) {
 
 const MainTextContainer = styled.div`
     font-size:  ${props => props.font};
-    font-weight: medium;
+    font-weight: 500;
     color: ${color.Black};
     text-overflow: ellipsis;
     overflow: hidden;

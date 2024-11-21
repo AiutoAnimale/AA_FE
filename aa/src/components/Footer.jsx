@@ -43,8 +43,7 @@ const Container = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${color.White};
-    border-top: solid 1px ${color.Gray[1]};
+    background-color: ${color.Gray[0]};
 `;
 
 const List = styled.div`
@@ -61,7 +60,7 @@ const List = styled.div`
 const Data = styled.div`
     font-size: 1rem;
     user-select: none;
-    color: ${color.Black};
+    color: ${color.Gray[9]};
 
     @media screen and (max-width: ${breakpoints.tabletSmall}) {
         font-size: 0.9rem;
@@ -87,7 +86,7 @@ const RowGap = styled.div`
 const Border = styled.div`
     width: 1px;
     height: 25px;
-    background-color: ${color.Black};
+    background-color: ${color.Gray[9]};
 `
 
 const Div = styled.div`

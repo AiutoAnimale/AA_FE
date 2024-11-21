@@ -21,7 +21,7 @@ const Btn = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${color.Orange[3]};
+    background-color: ${color.Orange[0]};
 
     &:hover {
         cursor: pointer;

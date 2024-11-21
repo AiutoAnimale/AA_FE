@@ -12,14 +12,14 @@ export default function Button(props) {
 
 const Btn = styled.button`
     width: 80%;
-    height: 45px;
+    height: 60px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
-    font-weight: medium;
+    font-size: 22px;
+    font-weight: bold;
     color: ${color.White};
     background-color: ${color.Black};
 
