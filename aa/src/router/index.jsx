@@ -6,6 +6,12 @@ import UserData from "../pages/User/UserData";
 import UserNickName from "../pages/User/UserNickName";
 import UserPetData from "../pages/User/UserPetData";
 import Main from "../pages/Main";
+import MissingMain from "../pages/Missing/Main";
+import MissingView from "../pages/Missing/View";
+import MissingCreate from "../pages/Missing/Create";
+import CommunityMain from "../pages/Community/Main";
+import CommunityView from "../pages/Community/View";
+import CommunityCreate from "../pages/Community/Create";
 
 export default function Router() {
   return (
@@ -17,6 +23,12 @@ export default function Router() {
         <Route path="/signupPet" element={<UserPetData />} />
         <Route element={<Layout />}>
           <Route path="/" element={<Main />} />
+          <Route path="/missing/main" element={<MissingMain />} />
+          <Route path="/missing/view" element={<MissingView />} />
+          <Route path="/missing/create" element={<MissingCreate />} />
+          <Route path="/community/main" element={<CommunityMain />} />
+          <Route path="/community/view" element={<CommunityView />} />
+          <Route path="/community/create" element={<CommunityCreate />} />
         </Route>
       </Routes>
     </BrowserRouter>
