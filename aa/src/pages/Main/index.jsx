@@ -1,4 +1,3 @@
-//Main
 import { useState } from "react";
 import MainBackground from "../../assets/image/MainBackground.png";
 import Event from "../../assets/image/Event.png";
@@ -7,7 +6,6 @@ import { breakpoints } from "../../style/device";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DataContainer from "./DataContainer";
-import AlarmContainer from "./AlarmContainer";
 import MissingContainer from "./MissingContainer";
 
 export default function Main() {
@@ -21,19 +19,14 @@ export default function Main() {
         { text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ", number: "5", tag: "일상", user: "초코 보호자", count: "13"  },
      ];
 
-     const AlarmList = [
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "1", tag: "일상", user: "운영자", count: "13" },
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "2", tag: "일상", user: "운영자", count: "13"  },
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "3", tag: "일상", user: "운영자", count: "13"  },
-        { text: "[공지] V2 업데이트 공지! 지금 당장 업데이트 하러 달려가요! 👣", number: "4", tag: "일상", user: "운영자", count: "13"  },
+     const MissingList = [
+        { state: "대전광역시 동구", name: "기염미", image: "" },
+        { state: "대전광역시 동구", name: "기염미", image: "" },
+        { state: "대전광역시 동구", name: "기염미", image: "" },
      ];
 
      const moreCommunity = () => {
         navigate("/community");
-     }
-
-     const moreKnowing = () => {
-        navigate("/knowing");
      }
 
      const moreMissing = () => {
@@ -46,30 +39,22 @@ export default function Main() {
                 <BannerDiv>
                     <BannerInnerDiv>
                         <BannerLeft>
+                            <TempContainer>최저 24° | 최고 33°</TempContainer>
+                            <div>
+                                <TempText font={'24px'}>성남시 분당구의</TempText>
+                                <TempText font={'24px'}>오늘의 날씨는 비가 온다냐~!</TempText>
+                            </div>
+                            <Ment>오늘은 한 번 우비 & 우산 챙겨도 나쁘지 않을지도?</Ment>
                             <Gap>
                                 <BannerTag>#오늘날씨</BannerTag>
                                 <BannerTag>#산책</BannerTag>
                             </Gap>
-                            <TempContainer>최저 24° | 최고 33°</TempContainer>
-                            <div>
-                                <TempText font={'1.7rem'}>성남시 분당구의</TempText>
-                                <TempText font={'1.5rem'}>오늘의 날씨는 비가 온다냐~!</TempText>
-                            </div>
-                            <Ment>오늘은 한 번 우비 & 우산 챙겨도 나쁘지 않을지도?</Ment>
                         </BannerLeft>
-                        <Temp>24°</Temp>
                     </BannerInnerDiv>
                 </BannerDiv>
-                <DataContainer data={List} firstText="몽글몽글" secondText="커뮤니티" color={color.Orange[1]} btnText="커뮤니티 더보기" event={moreCommunity} />
-                <EventDiv>
-                    <TempText font={'1.4rem'}>3월 13일 국제 강아지의 날 맞이 </TempText>
-                    <TempText font={'1.5rem'}>강아지숲, 반려견 입장료 50% 할인이벤트</TempText>
-                </EventDiv>
-                <DataContainer data={List} firstText="지식" secondText="톡톡" color={color.Blue[0]} btnText="지식톡톡 더보기" event={moreKnowing} />
-                <Div>
-                    <AlarmContainer data={AlarmList} />
-                    <MissingContainer event={moreMissing} />
-                </Div>
+                <DataContainer data={List} text="몽글몽글 커뮤니티" color={color.Orange[1]} btnText="커뮤니티 더보기" event={moreCommunity} />
+                <EventDiv />
+                <MissingContainer data={MissingList} text="우리 애가 사라졌어요!" color={color.Orange[1]} btnText="더보기" event={moreMissing} />
             </Container>
         </>
     );
@@ -79,10 +64,11 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    row-gap: 40px;
+    row-gap: 20px;
     padding-bottom: 80px;
-    background-color: ${color.Gray[11]};
+    background-color: ${color.White};
 `;
 
 const BannerDiv = styled.div`
@@ -90,8 +76,8 @@ const BannerDiv = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 300px;
-    background-color: ${color.Black};
+    height: 320px;
+    background-color: ${color.Orange[0]};
 `
 
 const BannerInnerDiv = styled.div`
@@ -101,6 +87,7 @@ const BannerInnerDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background-position: right;
     background-repeat: no-repeat;
     background-size: contain;
@@ -128,45 +115,33 @@ const BannerTag = styled.div`
     padding: 5px 15px;
     height: 20px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    border: solid 1.2px ${color.Orange[0]};
-    color: ${color.Orange[0]};
+    font-size: 13px;
+    background-color: ${color.Orange[4]};
+    color: ${color.White};
     user-select: none;
 `
 
 const TempContainer = styled.div`
-    font-size: 0.9rem;
-    font-weight: bolder;
-    color: ${color.Gray[4]};
+    font-size: 13px;
+    font-weight: medium;
+    color: ${color.Black};
     padding: 5px 15px;
     border-radius: 5px;
-    background-color: ${color.Gray[9]};
+    background-color: ${color.Orange[1]};
     user-select: none;
 `
 
 const TempText = styled.div`
     font-size: ${props => props.font};
     font-weight: bolder;
-    color: ${color.White};
+    color: ${color.Black};
     user-select: none;
-`
-
-const Temp = styled.div`
-    font-size: 5rem;
-    font-weight: medium;
-    color: ${color.White};
-    width: 40%;
-    user-select: none;
-
-    @media screen and (max-width: ${breakpoints.mobileSmall}) {
-        display: none;
-    }
 `
 
 const Ment = styled.div`
     font-size: 0.9rem;
     font-weight: medium;
-    color: ${color.Gray[5]};
+    color: ${color.Black};
     user-select: none;
 
     @media screen and (max-width: ${breakpoints.mobileSmall}) {
@@ -175,33 +150,15 @@ const Ment = styled.div`
 `
 
 const EventDiv = styled.div`
-    max-width: 845px;
-    width: 100%;
+    max-width: 920px;
+    width: 90%;
     height: 150px;
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url(${Event});
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px 20px;
-    row-gap: 10px;
+    border-radius: 15px;
 
     @media screen and (max-width: ${breakpoints.tabletSmall}) {
         display: none;
-    }
-`
-
-const Div = styled.div`
-    max-width: 885px;
-    padding: 0 5%;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-
-    @media screen and (max-width: ${breakpoints.tabletSmall}) {
-        flex-direction: column;
-        align-items: center;
-        row-gap: 20px;
     }
 `

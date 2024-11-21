@@ -1,4 +1,3 @@
-//Main/DataContainer
 import { useState } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
@@ -13,34 +12,27 @@ export default function DataContainer(props) {
     return (
                 <Div>
                     <TextDiv>
-                        <Text color={color.Black}>{props.firstText}</Text>
-                        <Text color={props.color}>{props.secondText}</Text>
+                        <Text>{props.text}</Text>
+                        <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
                     </TextDiv>
                     <Bottom>
                         {props.data.map((item, index) => (
-                            <BottomList border={item.number == 1 ? "none" : "solid"}>
-                                <Number color={item.number <= 3 ? color.Orange[1] : color.Black}>{item.number}</Number>
+                            <BottomList>
+                                <Number>{item.number}</Number>
                                 <Column>
-                                    <MainDiv state={"flex-start"}>
-                                        <Tag type={'tag'} backColor={color.Orange[3]} color={color.Orange[2]} data={`#${item.tag}`} />
-                                        <MainText data={item.text} />
-                                    </MainDiv>
-                                    <MainDiv state={"space-between"}>
-                                        <UserName data={item.user} />
-                                        <Tag backColor={color.Gray[0]} color={color.Gray[7]} data={`댓글 ${item.count}`} />
-                                    </MainDiv>
+                                    <Tag type={'tag'} backColor={color.Orange[0]} color={color.Orange[3]} data={`#${item.tag}`} />
+                                    <MainText data={item.text} size={'18px'} />
+                                    <UserName data={item.user} />
                                 </Column>
                             </BottomList>
                         ))}
-                        <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
                     </Bottom>
                 </Div>
     );
 }
 
 const Div = styled.div`
-    max-width: 885px;
-    padding: 0 5%;
+    max-width: 920px;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -48,24 +40,23 @@ const Div = styled.div`
 `
 
 const Text = styled.div`
-    font-size: 1.5rem;
+    font-size: 22px;
     font-weight: bolder;
-    color: ${props => props.color};
+    color: ${color.Black};
     user-select: none;
 `
 
 const TextDiv = styled.div`
-    gap: 5px;
+    height: 94px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px ${color.Gray[1]};
 `
 
 const Bottom = styled.div`
     width: 100%;
     height: 630px;
-    background-color: ${color.White};
-    border-radius: 20px;
-    border: solid 1px ${color.Gray[1]};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,25 +65,17 @@ const Bottom = styled.div`
 const BottomList = styled.div`
     display: flex;
     align-items: center;
-    width: 90%;
-    height: 18%;
-    border-top: ${props => props.border} 1.2px ${color.Gray[1]};
+    width: 100%;
+    height: 20%;
     gap: 30px;
 `
 
 const MoreBtn = styled.button`
-    width: 100%;
-    height: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: ${color.White};
     border: none;
-    border-top: solid 1.2px ${color.Gray[1]};
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: medium;
     color: ${color.Gray[7]};
-    border-radius: 0px 0px 20px 20px;
     user-select: none;
 
     &:hover {
@@ -101,23 +84,10 @@ const MoreBtn = styled.button`
 `
 
 const Number = styled.div`
-    font-size: 1.3rem;
+    font-size: 24px;
     font-weight: medium;
-    color: ${props => props.color};
+    color: ${color.Orange[4]};
     user-select: none;
-`
-
-const MainDiv = styled.div`
-    gap: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    justify-content: ${props => props.state};
-
-    @media screen and (max-width: ${breakpoints.mobileSmall}) {
-        width: 87%;
-    }
 `
 
 const Column = styled.div`

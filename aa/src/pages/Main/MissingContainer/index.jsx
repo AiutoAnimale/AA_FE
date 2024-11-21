@@ -1,72 +1,82 @@
-//Main/Missing
 import { useState } from "react";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
-import MissingBackground from "../../../assets/image/MissingBackground.png";
-import { ReactComponent as SpeakerSVG } from "../../../assets/icon/MissingSpeaker.svg";
 
-import ConfirmBtn from "../../../components/ConfirmBtn";
+import UserName from "../../../components/UserName";
 
 export default function MissingContainer(props) {
+
     return (
-        <Bottom>
-            <BottomContainer>
-                <Speaker />
-                <Text color={color.Black} weight={'bolder'} size={'1.1rem'}>우리 애가 사라졌어요!</Text>
-                <TextContainer>
-                    <Text color={color.Gray[5]} weight={'medium'} size={'1rem'}>사라진 동물들의 정보를</Text>
-                    <Text color={color.Gray[5]} weight={'medium'} size={'1rem'}>업데이트하고 확인해보세요</Text>
-                </TextContainer>
-            </BottomContainer>
-            <ConfirmBtn text={'실종 동물 확인하러가기'} font={'16px'} onClick={props.event} />
-        </Bottom>
+                <Div>
+                    <TextDiv>
+                        <Text>{props.text}</Text>
+                        <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
+                    </TextDiv>
+                    <Bottom>
+                        {props.data.map((item, index) => (
+                            <ImgContainer>
+                                <ImageDiv data={item.image} />
+                                <UserName data={`${item.state} / ${item.name}`} />
+                            </ImgContainer>
+                        ))}
+                    </Bottom>
+                </Div>
     );
 }
 
+const Div = styled.div`
+    max-width: 920px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+`
+
 const Text = styled.div`
-    font-size: ${props => props.size};
-    font-weight: ${props => props.weight};
-    color: ${props => props.color};
+    font-size: 22px;
+    font-weight: bolder;
+    color: ${color.Black};
     user-select: none;
 `
 
-const Bottom = styled.div`
-    width: 25%;
-    padding: 20px 30px;
-    background-color: ${color.White};
-    border-radius: 20px;
-    border: solid 1px ${color.Orange[4]};
+const TextDiv = styled.div`
+    height: 94px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url(${MissingBackground});
-    row-gap: 40px;
+    justify-content: space-between;
+    border-bottom: solid 1px ${color.Gray[1]};
+`
 
-    @media screen and (max-width: ${breakpoints.tabletSmall}) {
-        background-position: center;
-        padding: 2% 5%;
-        width: 90%;
+const Bottom = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+`
+
+const MoreBtn = styled.button`
+    background-color: ${color.White};
+    border: none;
+    font-size: 18px;
+    font-weight: medium;
+    color: ${color.Gray[7]};
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
     }
 `
 
-const TextContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 5px;
+const ImageDiv = styled.div`
+    width: 280px;
+    height: 380px;
+    border: solid 1px ${color.Orange[3]};
+    border-radius: 10px;
 `
 
-const BottomContainer = styled.div`
+const ImgContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     row-gap: 10px;
 `
-
-const Speaker = styled(SpeakerSVG)``;
