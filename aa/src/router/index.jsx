@@ -23,12 +23,12 @@ export default function Router() {
         <Route path="/signupPet" element={<UserPetData />} />
         <Route element={<Layout />}>
           <Route path="/" element={<Main />} />
-          <Route path="/missing/main" element={<MissingMain />} />
-          <Route path="/missing/view" element={<MissingView />} />
-          <Route path="/missing/create" element={<MissingCreate />} />
-          <Route path="/community/main" element={<CommunityMain />} />
-          <Route path="/community/view" element={<CommunityView />} />
-          <Route path="/community/create" element={<CommunityCreate />} />
+          <Route path="/missingmain" element={<MissingMain />} />
+          <Route path="/missingview" element={<MissingView />} />
+          <Route path="/missingcreate" element={<MissingCreate />} />
+          <Route path="/communitymain" element={<CommunityMain />} />
+          <Route path="/communityview" element={<CommunityView />} />
+          <Route path="/communitycreate" element={<CommunityCreate />} />
         </Route>
       </Routes>
     </BrowserRouter>

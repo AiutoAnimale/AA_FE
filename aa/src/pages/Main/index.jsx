@@ -26,11 +26,11 @@ export default function Main() {
      ];
 
      const moreCommunity = () => {
-        navigate("/community");
+        navigate("/communitymain");
      }
 
      const moreMissing = () => {
-        navigate("/missing");
+        navigate("/missingmain");
      }
 
     return (
