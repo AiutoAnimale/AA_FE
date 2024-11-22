@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../components/Layout";
 import Login from "../pages/Auth";
@@ -12,6 +11,7 @@ import MissingCreate from "../pages/Missing/Create";
 import CommunityMain from "../pages/Community/Main";
 import CommunityView from "../pages/Community/View";
 import CommunityCreate from "../pages/Community/Create";
+import CommunityLayout from "../components/CommunityLayout";
 
 export default function Router() {
   return (
@@ -21,11 +21,15 @@ export default function Router() {
         <Route path="/signupData" element={<UserData />} />
         <Route path="/signupNick" element={<UserNickName />} />
         <Route path="/signupPet" element={<UserPetData />} />
+
         <Route element={<Layout />}>
           <Route path="/" element={<Main />} />
           <Route path="/missingmain" element={<MissingMain />} />
           <Route path="/missingview" element={<MissingView />} />
           <Route path="/missingcreate" element={<MissingCreate />} />
+        </Route>
+
+        <Route element={<CommunityLayout />}>
           <Route path="/communitymain" element={<CommunityMain />} />
           <Route path="/communityview" element={<CommunityView />} />
           <Route path="/communitycreate" element={<CommunityCreate />} />
