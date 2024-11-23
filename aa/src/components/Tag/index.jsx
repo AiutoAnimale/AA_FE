@@ -10,6 +10,7 @@ export default function Tag(props) {
       backColor={props.backColor}
       color={props.color}
       fontSize={props.fontSize || "0.9rem"}
+      fontWeight={props.fontWeight || "medium"}
     >
       {props.data}
     </TagContainer>
@@ -25,7 +26,7 @@ const TagContainer = styled.div`
   border-radius: 5px;
   background-color: ${(props) => props.backColor};
   font-size: ${(props) => props.fontSize};
-  font-weight: medium;
+  font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.color};
   white-space: nowrap;
   user-select: none;
