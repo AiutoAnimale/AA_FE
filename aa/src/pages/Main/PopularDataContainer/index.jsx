@@ -12,9 +12,9 @@ export default function PopularDataContainer(props) {
     <Div>
       <TextDiv>
         <Text>{props.text}</Text>
-        {props.subText && <SubText>{props.subText}</SubText>}{" "}
         <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
       </TextDiv>
+      {props.subText && <SubText>{props.subText}</SubText>}
       <Bottom>
         {props.data.map((item, index) => (
           <BottomList key={index}>
@@ -25,12 +25,20 @@ export default function PopularDataContainer(props) {
                 backColor={color.Orange[0]}
                 color={color.Orange[3]}
                 data={`#${item.tag}`}
+                width="102px"
+                height="53px"
+                fontSize="20px"
+                fontWeight="bold"
               />
-              <MainText data={item.text} size={"18px"} />
-              <UserName data={item.user} />
+              <MainText data={item.text} size={"25px"} fontWeight={"bold"} />
             </Column>
+            <UserNameWrapper>
+              <UserName data={item.user} />
+            </UserNameWrapper>
           </BottomList>
         ))}
+        <InnerText>{props.textContent || "내용이 없습니다."}</InnerText>
+        <Image />
       </Bottom>
     </Div>
   );
@@ -52,7 +60,7 @@ const Text = styled.div`
 `;
 
 const SubText = styled.div`
-  font-size: 12px;
+  font-size: 18px;
   font-weight: bold;
   color: ${color.Gray[5]};
   margin-top: 10px;
@@ -60,22 +68,18 @@ const SubText = styled.div`
 `;
 
 const TextDiv = styled.div`
-  height: auto;
+  height: 94px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: solid 1px ${color.Gray[1]};
-  width: 100%;
-  padding-bottom: 10px;
 `;
 
 const Bottom = styled.div`
   width: 100%;
-  height: 630px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const BottomList = styled.div`
@@ -84,6 +88,7 @@ const BottomList = styled.div`
   width: 100%;
   height: 20%;
   gap: 30px;
+  flex-wrap: wrap;
 `;
 
 const MoreBtn = styled.button`
@@ -113,4 +118,38 @@ const Column = styled.div`
   justify-content: center;
   width: 100%;
   row-gap: 10px;
+  flex: 1;
+`;
+
+const UserNameWrapper = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+`;
+
+const InnerText = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  color: ${color.Black};
+  margin-top: 20px;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 20px;
+`;
+
+const Image = styled.div`
+  width: 280px;
+  height: 380px;
+  border: solid 1px ${color.Orange[3]};
+  border-radius: 10px;
+  margin-left: 20px;
 `;
