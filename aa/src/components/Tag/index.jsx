@@ -9,6 +9,7 @@ export default function Tag(props) {
       height={props.height || (props.type === "tag" ? "27px" : "30px")}
       backColor={props.backColor}
       color={props.color}
+      fontSize={props.fontSize || "0.9rem"}
     >
       {props.data}
     </TagContainer>
@@ -23,7 +24,7 @@ const TagContainer = styled.div`
   justify-content: center;
   border-radius: 5px;
   background-color: ${(props) => props.backColor};
-  font-size: 0.9rem;
+  font-size: ${(props) => props.fontSize};
   font-weight: medium;
   color: ${(props) => props.color};
   white-space: nowrap;
