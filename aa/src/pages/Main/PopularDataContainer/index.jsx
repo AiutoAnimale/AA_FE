@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom"; // useLocation 가져오기
+import { useLocation } from "react-router-dom";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
