@@ -7,6 +7,10 @@ import CommunityHeader from "../components/CommunityHeader";
 export default function CommunityLayout() {
   const location = useLocation();
 
+  if (location.pathname === "/communityview") {
+    return <Outlet />;
+  }
+
   return (
     <Container>
       <CommunityHeader />
