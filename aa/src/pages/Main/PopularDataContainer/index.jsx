@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom"; // useLocation 가져오기
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
@@ -8,12 +9,18 @@ import Tag from "../../../components/Tag";
 import MainText from "../../../components/MainText";
 
 export default function PopularDataContainer(props) {
+  const location = useLocation();
+
+  const isCommunityView = location.pathname === "/communityview";
+
   return (
     <Div>
-      <TextDiv>
-        <Text>{props.text}</Text>
-        <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
-      </TextDiv>
+      {!isCommunityView && (
+        <TextDiv>
+          <Text>{props.text}</Text>
+          <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
+        </TextDiv>
+      )}
       {props.subText && <SubText>{props.subText}</SubText>}
       <Bottom>
         {props.data.map((item, index) => (
