@@ -12,7 +12,7 @@ import CommunityMain from "../pages/Community/Main";
 import CommunityView from "../pages/Community/View";
 import CommunityCreate from "../pages/Community/Create";
 import CommunityLayout from "../components/CommunityLayout";
-
+import MissingLayout from "../components/MissingLayout";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -22,7 +22,7 @@ export default function Router() {
         <Route path="/signupNick" element={<UserNickName />} />
         <Route path="/signupPet" element={<UserPetData />} />
 
-        <Route element={<Layout />}>
+        <Route element={<MissingLayout />}>
           <Route path="/" element={<Main />} />
           <Route path="/missingmain" element={<MissingMain />} />
           <Route path="/missingview" element={<MissingView />} />
