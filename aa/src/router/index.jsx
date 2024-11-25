@@ -13,6 +13,8 @@ import CommunityView from "../pages/Community/View";
 import CommunityCreate from "../pages/Community/Create";
 import CommunityLayout from "../components/CommunityLayout";
 import MissingLayout from "../components/MissingLayout";
+
+import DataContainer from "../pages/Main/DataContainer";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -22,17 +24,21 @@ export default function Router() {
         <Route path="/signupNick" element={<UserNickName />} />
         <Route path="/signupPet" element={<UserPetData />} />
 
-        <Route element={<MissingLayout />}>
+        <Route element={<Layout/>}>
           <Route path="/" element={<Main />} />
-          <Route path="/missingmain" element={<MissingMain />} />
-          <Route path="/missingview" element={<MissingView />} />
-          <Route path="/missingcreate" element={<MissingCreate />} />
+          <Route path="/data" element={<DataContainer/>} />
         </Route>
 
         <Route element={<CommunityLayout />}>
           <Route path="/communitymain" element={<CommunityMain />} />
           <Route path="/communityview" element={<CommunityView />} />
           <Route path="/communitycreate" element={<CommunityCreate />} />
+        </Route>
+
+        <Route element={<MissingLayout />}>
+          <Route path="/missingmain" element={<MissingMain />} />
+          <Route path="/missingview" element={<MissingView />} />
+          <Route path="/missingcreate" element={<MissingCreate />} />
         </Route>
       </Routes>
     </BrowserRouter>

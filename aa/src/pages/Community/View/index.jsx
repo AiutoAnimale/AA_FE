@@ -4,6 +4,9 @@ import { color } from "../../../style/theme";
 import PopularDataContainer from "../../Main/PopularDataContainer";
 import CommentContainer from "../../../components/CommentContainer";
 
+
+// communityview 커뮤니티 상세보기
+
 export default function CommunityView() {
   const navigate = useNavigate();
   const PopularList = [

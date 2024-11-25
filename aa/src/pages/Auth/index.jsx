@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import NextButton from "../../components/Next";
+import axios from "axios";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -21,13 +22,42 @@ export default function Login() {
           ...prevData,
           [field]: text
         }));
+        console.log(text);
     }
 
-    const onClickLogin = () => {
-        navigate("/");
+    useEffect(() => {
+        console.log(loginData);
+    }, [loginData]);
+
+
+    const onClickLogin = async (e) => {
+        e.preventDefault(); // 창이 새로고침 되는 걸 막음
+
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_API_KEY}/users/login`, {
+                userid: loginData.userid,
+                userpw: loginData.userpw
+            })
+
+            if (response.status === 201) {
+                localStorage.setItem("token", response.data.accessToken);
+                console.log("받은 토큰: ", response.data.accessToken);
+
+                alert("로그인 성공!");
+                navigate("/");
+            }
+           
+        }
+        catch (error) {
+            console.log("로그인 실패:", error.message);
+            console.log(loginData);
+            console.log(`${process.env.REACT_APP_API_KEY} 출력` );
+            alert("로그인 실패");
+        }
     }
 
     const onClickSignup = () => {
+        
         navigate("/signupdata");
     }
 
@@ -50,13 +80,13 @@ export default function Login() {
                         <Input
                         text={"비밀번호"}
                         placeholder={"비밀번호를 입력하세요"}
-                        type={pwState == true ? 'text' : 'password'}
+                        type={pwState === true ? 'text' : 'password'}
                         state={'password'}
                         onClick={() => setPwState(!pwState)}
                         onGetText={(text) => handleInputChange(text, "userpw")}
                         />
                     </InputContainer>
-                    <Button onClick={() => onClickLogin()} text={"로그인"} />
+                    <Button onClick={onClickLogin} text={"로그인"} type="submit"/>
                     <Linked><Linking onClick={() => onClickSignup()}>회원가입</Linking> 하러가기</Linked>
                 </MainContainer>
             </Container>

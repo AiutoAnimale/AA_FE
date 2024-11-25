@@ -8,6 +8,8 @@ import UserName from "../../../components/UserName";
 import Tag from "../../../components/Tag";
 import MainText from "../../../components/MainText";
 
+// 커뮤니티 인기 게시물
+
 export default function PopularDataContainer(props) {
   const location = useLocation();
 

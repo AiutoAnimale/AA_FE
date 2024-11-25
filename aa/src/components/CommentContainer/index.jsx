@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { color } from "../../style/theme";
 
+
+// 커뮤니티 상세보기 댓글
+
 export default function CommentContainer({ data, number }) {
   return (
     <Container>

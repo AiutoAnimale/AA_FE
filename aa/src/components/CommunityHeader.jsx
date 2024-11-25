@@ -5,12 +5,13 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as LogoSVG } from "../assets/Logo.svg";
 
+
 export default function Header() {
   const navigate = useNavigate();
 
   const MainList = [
-    { name: "커뮤니티", path: "/community" },
-    { name: "실종", path: "/missing" },
+    { name: "커뮤니티", path: "/communitymain" },
+    { name: "실종", path: "/missingmain" },
   ];
 
   return (
@@ -18,7 +19,7 @@ export default function Header() {
       <Container>
         <List>
           <DataContainer>
-            <TextLogo onClick={() => navigate("/main")} />
+            <TextLogo onClick={() => navigate("/")} />
             {MainList.map((item, index) => (
               <Data
                 key={index}

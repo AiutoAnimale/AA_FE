@@ -60,9 +60,10 @@ const SubText = styled.div`
 const TextDiv = styled.div`
   height: auto;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
+  justify-content: space-between;
   border-bottom: solid 1px ${color.Gray[1]};
   width: 100%;
   padding-bottom: 10px;

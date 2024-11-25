@@ -36,7 +36,7 @@ export default function MissingMain() {
           <Missingsubtext>
             전국의 반려인들에게 도움을 요청해보세요!
           </Missingsubtext>
-          <CreatePostButton onClick={() => navigate("/createpost")}>
+          <CreatePostButton onClick={() => navigate("/missingcreate")}>
             도움 요청하기
           </CreatePostButton>
         </Missingtop>
