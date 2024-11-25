@@ -7,7 +7,8 @@ export default function MissingLayout() {
 
   return (
     <Container>
-      {location.pathname !== "/missingview" && <MissingHeader />}
+      {location.pathname !== "/missingview" &&
+        location.pathname !== "/missingcreate" && <MissingHeader />}
       <Outlet />
     </Container>
   );
