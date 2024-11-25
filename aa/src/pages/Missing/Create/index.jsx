@@ -57,7 +57,6 @@ export default function MissingCreate() {
               <p>사진을 첨부해주세요</p>
             </PhotoInput>
           )}
-
           {image && (
             <ImageWrapper
               onMouseEnter={() => setIsHovered(true)}
@@ -69,7 +68,6 @@ export default function MissingCreate() {
               )}
             </ImageWrapper>
           )}
-
           <UploadButtonWrapper>
             <UploadButton disabled={isButtonDisabled}>글 업로드</UploadButton>
           </UploadButtonWrapper>
