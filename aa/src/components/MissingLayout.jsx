@@ -2,13 +2,13 @@ import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
-import CommunityHeader from "../components/CommunityHeader";
+import MissingHeader from "../components/MissingHeader";
 
 export default function MissingLayout() {
   const location = useLocation();
   return (
     <Container>
-      <CommunityHeader />
+      <MissingHeader />
       <Outlet />
     </Container>
   );
