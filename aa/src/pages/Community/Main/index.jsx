@@ -65,12 +65,7 @@ export default function CommunityMain() {
           color={color.Orange[1]}
           btnText="자세히 보기"
         />
-        <DataContainer
-          data={List}
-          text="커뮤니티"
-          color={color.Orange[1]}
-          subText="서로의 이야기를 나누어봐요"
-        />
+        <DataContainer data={List} text="커뮤니티" color={color.Orange[1]} />
       </Container>
     </>
   );
