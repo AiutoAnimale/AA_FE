@@ -19,9 +19,9 @@ export default function MissingDataContainer({ data }) {
                   <Feature>특징</Feature>
                 </TitleContainer>
                 <ContentContainer>
-                  <Placecontent>{item.placeContent}</Placecontent>
-                  <Timecontent>{item.timeContent}</Timecontent>
-                  <Featurecontent>{item.featureContent}</Featurecontent>
+                  <Placecontent>{item.Content}</Placecontent>
+                  <Timecontent>{item.Content}</Timecontent>
+                  <Featurecontent>{item.Content}</Featurecontent>
                 </ContentContainer>
               </Borderbox>
               <Content>댓글 3개...</Content>
