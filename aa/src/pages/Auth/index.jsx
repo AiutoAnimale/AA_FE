@@ -27,13 +27,10 @@ export default function Login() {
         console.log(text);
     }
 
-    // useEffect(() => {
-    //     console.log(loginData);
-    // }, [loginData]);
-
 
     const onClickLogin = async (e) => {
         e.preventDefault(); // 창이 새로고침 되는 걸 막음
+        console.log(`${process.env.REACT_APP_API_KEY} 출력` );
 
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_KEY}/users/login`, {
@@ -54,6 +51,7 @@ export default function Login() {
             console.log("로그인 실패:", error.message);
             console.log(loginData);
             console.log(`${process.env.REACT_APP_API_KEY} 출력` );
+
             alert("로그인 실패");
         }
     }

@@ -1,31 +1,40 @@
+import { useLocation } from "react-router-dom";
 import { color } from "../../../style/theme";
 import styled from "styled-components";
 
-export default function MissingViewDataContainer({ data }) {
+import UserName from "../../../components/UserName";
+import Tag from "../../../components/Tag";
+import MainText from "../../../components/MainText";
+
+export default function MissingViewDataContainer(props) {
+
+  const location = useLocation();
+
+  const {body, idx, userid, nickname, title, emergency} = props.data;
+
+  const isMissingView = location.pathname === "/missingview";
+
   return (
     <>
       <Container>
-        {data.map((item, index) => (
-          <LeftContainer key={index}>
+          <LeftContainer>
             <InnerContainer>
               <TitleBox>
                 <MissingTag>#실종</MissingTag>
-                <Writter>{item.writter}</Writter>
+                <Writter>{nickname}</Writter>
               </TitleBox>
-              <Title>{item.title}</Title>
+              <Title>{title}</Title>
             </InnerContainer>
             <ContentImageWrapper>
               <ContentSection>
                 <Borderbox>
-                  <TitleContainer>
+                  {/* <TitleContainer>
                     <Place>실종 위치</Place>
                     <Time>실종 시각</Time>
                     <Feature>특징</Feature>
-                  </TitleContainer>
+                  </TitleContainer> */}
                   <ContentContainer>
-                    <Placecontent>{item.placeContent}</Placecontent>
-                    <Timecontent>{item.timeContent}</Timecontent>
-                    <Featurecontent>{item.featureContent}</Featurecontent>
+                    <Placecontent>{body}</Placecontent>
                   </ContentContainer>
                 </Borderbox>
               </ContentSection>
@@ -34,7 +43,6 @@ export default function MissingViewDataContainer({ data }) {
               </ImageContainerWrapper>
             </ContentImageWrapper>
           </LeftContainer>
-        ))}
       </Container>
     </>
   );

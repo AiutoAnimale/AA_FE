@@ -1,72 +1,57 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../../style/theme";
 import ViewDataContainer from "../../Main/PopularDataContainer/index2";
 import CommentContainer from "../../../components/CommentContainer";
 
-import axios from "axios";
-
-
-// communityview 커뮤니티 상세보기
+import { useLocation } from "react-router-dom";
+import { getViewAllList } from "../../../apis/getViewAllList";
+import { getAllComment } from "../../../apis/comment";
 
 export default function CommunityView() {
-  const PopularList = [
-    {
-      text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ",
-      tag: "일상",
-      user: "초코 보호자",
-      count: "13",
-      textContent:
-        "퍼어어어어어어어ㅓ어어어어어어어ㅓ어어어어어어어어어어ㅓ어어어어어엉",
-    },
-  ];
+   const location = useLocation();
+   const idx = location.state?.idx;
 
-  const CommentList = [
-    {
-      writer: "슈우웅",
-      content: "asdfasdfasdfadsfadsfsa",
-    },
-    {
-      writer: "홍길동",
-      content: "asdfadfasdfadsfsafdafdsadfafsafasf",
-    },
-    {
-      writer: "홍길동",
-      content: "asdfadfasdfadsfsafdafdsadfafsafasf",
-    },
-    {
-      writer: "홍길동",
-      content: "asdfadfasdfadsfsafdafdsadfafsafasf",
-    },
-    {
-      writer: "홍길동",
-      content: "asdfadfasdfadsfsafdafdsadfafsafasf",
-    },
-    {
-      writer: "홍길동",
-      content: "asdfadfasdfadsfsafdafdsadfafsafasf",
-    },
-    {
-      writer: "홍길동",
-      content: "asdfadfasdfadsfsafdafdsadfafsafasf",
-    },
-    {
-      writer: "홍길동",
-      content: "asdfadfasdfadsfsafdafdsadfafsafasf",
-    },
-  ];
+   const [viewPost, setViewPost] = useState(null); // 초기값 null로 설정
+   const [commentList, setCommentList] = useState([]);
+   const [loading, setLoading] = useState(true); // 로딩 상태 추가
 
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const allPosts = await getViewAllList();
+            const post = allPosts.find(item => item.idx === idx);
+            setViewPost(post);
 
-  return (
-    <>
+            if (post) {
+               const allComments = await getAllComment(post.idx);
+               setCommentList(allComments || []);
+            }
+         } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error.message);
+         } finally {
+            setLoading(false); // 로딩 상태 업데이트
+         }
+      };
+
+      fetchData();
+   }, [idx, commentList]);
+
+   if (loading) {
+      return <div>로딩 중...</div>; // 로딩 화면
+   }
+
+   return (
       <Container>
-        <Marginbox />
-        <ViewDataContainer data={PopularList} color={color.Orange[1]} />
-        <CommentContainer data={CommentList} number={CommentList.length} />
+         <Marginbox />
+         {viewPost ? (
+            <ViewDataContainer data={viewPost} color={color.Orange[1]} />
+         ) : (
+            <div>게시글이 존재하지 않습니다.</div>
+         )}
+         <CommentContainer type="postComment" feedid={viewPost.idx} data={commentList} number={commentList.length} />
       </Container>
-    </>
-  );
+   );
 }
 
 const Container = styled.div`

@@ -28,6 +28,8 @@ export default function MissingMain() {
       featureContent: "잘생김, 못생김",
     },
   ];
+
+  
   return (
     <>
       <Container>

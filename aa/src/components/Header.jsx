@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as LogoSVG } from "../assets/Logo.svg";
 
+import { getUserInfo } from "../apis/getInfo";
 import axios from "axios";
 
 // 완료
@@ -37,6 +38,7 @@ export default function Header() {
       console.error("사용자 정보 가져오기 오류:", error.message);
     }
   }
+
 
   useEffect(() => {
     console.log('실시간')

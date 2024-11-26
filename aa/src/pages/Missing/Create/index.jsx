@@ -1,77 +1,109 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import Input from "../../../components/Input";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function MissingCreate() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-  };
+  const [postCreateData, setPostCreateData] = useState({
+    title: "",
+    body: "",
+    tag: "",
+    emergency: ""
+  });
+  const [nickname, setNickname] = useState("");
 
-  const handleContentChange = (event) => {
-    setContent(event.target.value);
-  };
 
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setImage(URL.createObjectURL(file));
+  const handleInputChange = (text, field) => {
+    setPostCreateData(prevData => ({
+      ...prevData,
+      [field]: text
+    }));
+    console.log(text);
+    console.log('실행되고 ㅣㅇㅆ음');
+    
+  }
+
+  useEffect(() => {
+    getNickname()
+    console.log(postCreateData);
+  }, [postCreateData]);
+
+
+
+
+  const getNickname = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_KEY}/users/info`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`, 
+        }
+      });
+
+      if (response.data && response.data.nickname) {
+        setNickname(response.data.nickname);
+      }
     }
-  };
+    catch (error) {
+      console.error("닉네임 가져오기 오류:", error.message);
+    }
+  }
 
-  const handleDragOver = (event) => {
-    event.preventDefault();
-  };
 
-  const handleDeleteImage = () => {
-    setImage(null);
-  };
 
-  const isButtonDisabled = !title || !content;
+  const onSubmitPost = async () => {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_KEY}/feeds/WriteFeed`, {
+        nickname: nickname,
+        title: postCreateData.title,
+        body: postCreateData.body,
+        tag: "실종",
+        emergency: "1"
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`, 
+          'Content-Type': 'application/json' 
+        }
+      });
+
+      if (response.status === 201) {
+        navigate('/missingmain');
+        alert("게시물 업로드 성공!");
+        
+    }
+    }
+    catch (error) {
+      console.log("게시물이 업로드되지 않았습니다.", error.message);
+      console.log(postCreateData);
+    }
+  }
+
+  
+
+
 
   return (
     <Container>
       <InnerContainer>
         <Name>도움 글 작성하기</Name>
         <Title>제목</Title>
-        <TitleInput
-          value={title}
-          onChange={handleTitleChange}
-          placeholder="제목 입력"
-        />
+        <Input
+          type={'text'}
+          onGetText={(text) => handleInputChange(text, "title")}
+          placeholder="도움 요청 제목 입력"
+        /> 
         <Content>내용</Content>
-        <ContentInput
-          value={content}
-          onChange={handleContentChange}
-          placeholder="내용 입력"
+        <Input
+          type={'text'}
+          onGetText={(text) => handleInputChange(text, "body")}
+          placeholder="도움 요청 내용 입력"
         />
-        <Photo>사진</Photo>
 
-        <PhotoInputWrapper>
-          {!image && (
-            <PhotoInput onDrop={handleDrop} onDragOver={handleDragOver}>
-              <p>사진을 첨부해주세요</p>
-            </PhotoInput>
-          )}
-          {image && (
-            <ImageWrapper
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <ImagePreview src={image} alt="미리보기" />
-              {isHovered && (
-                <DeleteButton onClick={handleDeleteImage}>삭제</DeleteButton>
-              )}
-            </ImageWrapper>
-          )}
           <UploadButtonWrapper>
-            <UploadButton disabled={isButtonDisabled}>글 업로드</UploadButton>
+            <UploadButton onClick={onSubmitPost}>글 업로드</UploadButton>
           </UploadButtonWrapper>
-        </PhotoInputWrapper>
       </InnerContainer>
     </Container>
   );

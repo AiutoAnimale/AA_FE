@@ -4,13 +4,13 @@ import Input from "../../../components/Input";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// 코드는 짜놨으나 테스트 못함, 이미지 어디감? 이미지 넣어야함, 또 태그 어떻게 할거임;;
+// 
 
 export default function CommunityCreate() {
   // const [title, setTitle] = useState("");
   // const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
-  const [isHovered, setIsHovered] = useState(false);
+  // const [image, setImage] = useState(null);
+  // const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const [postCreateData, setPostCreateData] = useState({
     title: "",
@@ -29,21 +29,21 @@ const handleContentChange = (event) => {
 };
 */
 
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setImage(URL.createObjectURL(file));
-    }
-  };
+  // const handleDrop = (event) => {
+  //   event.preventDefault();
+  //   const file = event.dataTransfer.files[0];
+  //   if (file && file.type.startsWith("image/")) {
+  //     setImage(URL.createObjectURL(file));
+  //   }
+  // };
 
-  const handleDragOver = (event) => {
-    event.preventDefault();
-  };
+  // const handleDragOver = (event) => {
+  //   event.preventDefault();
+  // };
 
-  const handleDeleteImage = () => {
-    setImage(null);
-  };
+  // const handleDeleteImage = () => {
+  //   setImage(null);
+  // };
 
   // const isButtonDisabled = !title || !content;
 
@@ -121,24 +121,21 @@ const handleContentChange = (event) => {
         <Name>커뮤니티 글 작성하기</Name>
         <Title>제목</Title>
         <Input
-          // value={title}
-          // onChange={handleTitleChange}
           type={'text'}
           onGetText={(text) => handleInputChange(text, "title")}
           placeholder="커뮤니티 제목 입력"
         /> 
         <Content>내용</Content>
         <Input
-          // value={content}
-          // onChange={handleContentChange}
           type={'text'}
           onGetText={(text) => handleInputChange(text, "body")}
           placeholder="커뮤니티 내용 입력"
         />
-        <Photo>사진</Photo>
+        {/* <Photo>사진</Photo> */}
 
-        <PhotoInputWrapper>
-          {!image && (
+
+       {/* <PhotoInputWrapper> */}
+          {/* {!image && (
             <PhotoInput onDrop={handleDrop} onDragOver={handleDragOver}>
               <p>사진을 첨부해주세요</p>
             </PhotoInput>
@@ -154,13 +151,14 @@ const handleContentChange = (event) => {
                 <DeleteButton onClick={handleDeleteImage}>삭제</DeleteButton>
               )}
             </ImageWrapper>
-          )}
+          )} */}
 
-          <UploadButtonWrapper>
+          <UploadButtonWrapper> 
             {/* <UploadButton disabled={isButtonDisabled} onClick={onSubmitPost}>글 업로드</UploadButton> */}
-            <UploadButton onClick={onSubmitPost}>글 업로드</UploadButton>
+           <UploadButton onClick={onSubmitPost}>글 업로드</UploadButton>
           </UploadButtonWrapper>
-        </PhotoInputWrapper>
+        {/* </PhotoInputWrapper>  */}
+      
       </InnerContainer>
     </Container>
   );

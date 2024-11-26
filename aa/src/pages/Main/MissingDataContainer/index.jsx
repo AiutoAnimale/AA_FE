@@ -1,12 +1,40 @@
+import { useState, useEffect } from "react";
 import { color } from "../../../style/theme";
 import styled from "styled-components";
 
+import { useNavigate } from "react-router-dom";
+import { getViewAllList } from "../../../apis/getViewAllList";
+
 export default function MissingDataContainer({ data }) {
+  const navigate = useNavigate();
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const getView = async () => {
+      try {
+        const data = await getViewAllList();
+        setList(data);
+        console.log("바뀐거임");
+      }
+      catch (error) {
+        console.error("게시물 내용 가져오는데 실패 : ", error.message);
+        // console.error("게시물 내용 가져오는데 실패 : ", error.message);
+      }
+    }
+    getView();
+  }, []);
+
+  const handleClick = (idx) => {
+    navigate('/missingview', { state: { idx } }); // 클릭 시 idx를 state로 전달
+  };
+
+
+  
   return (
     <>
       <Container>
-        {data.map((item, index) => (
-          <LeftContainer key={index}>
+        {list.map((item, index) => (
+          <LeftContainer key={index} onClick={() => handleClick(item.idx)}>
             <ContentSection>
               <InnerContainer>
                 <MissingTag>#실종</MissingTag>
@@ -15,10 +43,10 @@ export default function MissingDataContainer({ data }) {
               <Borderbox>
                 <TitleContainer></TitleContainer>
                 <ContentContainer>
-                  <Placecontent>{item.Content}</Placecontent>
+                  <Placecontent>{item.body}</Placecontent>
                 </ContentContainer>
               </Borderbox>
-              <Content>댓글 3개...</Content>
+              {/* <Content>댓글 3개...</Content> */}
             </ContentSection>
 
             <ImageContainerWrapper>

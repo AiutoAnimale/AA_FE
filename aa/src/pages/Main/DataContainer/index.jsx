@@ -7,13 +7,17 @@ import MainText from "../../../components/MainText";
 
 
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { getViewAllList } from "../../../apis/getViewAllList";
+
+
 
 export default function DataContainer(props) {
   const navigate = useNavigate();
-
   const [list, setList] = useState([]);
 
+  /*
+
+  // api 태그 안가져왔을 때.
   const getViewAllList = async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_KEY}/feeds/viewAllList`, {
@@ -26,18 +30,27 @@ export default function DataContainer(props) {
     } catch (error) {
       console.log("전체 게시물을 불러오는데 실패 : ", error.message);
     }
-  };
+  };*/
 
   useEffect(() => {
-    getViewAllList();
+    const getView = async () => {
+      try {
+        const data = await getViewAllList();
+        setList(data);
+        console.log("바뀐거임");
+      }
+      catch (error) {
+        console.error("게시물 내용 가져오는데 실패 : ", error.message);
+        // console.error("게시물 내용 가져오는데 실패 : ", error.message);
+      }
+    }
+    getView();
   }, []);
 
-  const handleClick = (idx) => {
-    navigate('/communityview', 
-      { state: { idx } }
-    )
-  }
 
+  const handleClick = (idx) => {
+    navigate('/communityview', { state: { idx } }); // 클릭 시 idx를 state로 전달
+  };
 
   return (
     <Div>
@@ -49,7 +62,8 @@ export default function DataContainer(props) {
       <Bottom>
         {list.length > 1 && (
           list.slice(0, -1).slice(-5).map((item, index) => (
-            <BottomList key={index} onClick={handleClick(item.idx)}>
+            <BottomList key={index} onClick={() => handleClick(item.idx)} >
+               {/* <BottomList key={index} > */}
               <Number>{index + 1}</Number>
               <Column>
                 <Tag
@@ -98,7 +112,6 @@ const TextDiv = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  /* justify-content: space-between; */
   border-bottom: solid 1px ${color.Gray[1]};
   width: 100%;
   padding-bottom: 10px;

@@ -124,13 +124,13 @@ export default function Main() {
           event={moreCommunity}
         />
         <EventDiv />
-        <MissingContainer
+        {/* <MissingContainer
           data={missingList}
           text="우리 애가 사라졌어요!"
           color={color.Orange[1]}
           btnText="더보기"
           event={moreMissing}
-        />
+        /> */}
       </Container>
     </>
   );

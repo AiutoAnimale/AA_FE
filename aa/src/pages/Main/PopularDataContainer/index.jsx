@@ -9,6 +9,7 @@ import Tag from "../../../components/Tag";
 import MainText from "../../../components/MainText";
 
 import axios from "axios";
+// import { getViewAllList } from "../../../apis/getViewAllList";
 
 // 커뮤니티 인기 게시물
 
