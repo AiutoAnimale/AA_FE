@@ -95,18 +95,13 @@ const Title = styled.div`
   margin-bottom: 10px;
 `;
 
-const Titletext = styled.div`
-  color: #898989;
-  font-size: 20px;
-  margin-top: 24px;
-  margin-right: 32px;
-`;
-
 const Contenttext = styled.div`
   color: black;
   font-size: 20px;
   margin-top: 24px;
   font-weight: bold;
+  word-wrap: break-word;
+  max-width: 100%;
 `;
 
 const Borderbox = styled.div`
@@ -142,8 +137,3 @@ const ImageContainer = styled.div`
 `;
 
 const Placecontent = Contenttext;
-const Timecontent = Contenttext;
-const Featurecontent = Contenttext;
-const Place = Titletext;
-const Time = Titletext;
-const Feature = Titletext;
