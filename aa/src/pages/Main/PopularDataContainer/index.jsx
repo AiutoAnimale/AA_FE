@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
@@ -8,12 +8,37 @@ import UserName from "../../../components/UserName";
 import Tag from "../../../components/Tag";
 import MainText from "../../../components/MainText";
 
+import axios from "axios";
+
 // 커뮤니티 인기 게시물
 
 export default function PopularDataContainer(props) {
   const location = useLocation();
 
   const isCommunityView = location.pathname === "/communityview";
+
+  const [list, setList] = useState([]);
+
+  const getViewAllList = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_KEY}/feeds/viewAllList`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      });
+
+      setList(response.data);
+    }
+    catch (error) {
+      console.log("전체 게시물을 불러오는데 실패 : ", error.message);
+    }
+  }
+
+  useEffect(() => {
+    getViewAllList();
+  }, []);
+
+
 
   return (
     <Div>
@@ -25,29 +50,31 @@ export default function PopularDataContainer(props) {
       )}
       {props.subText && <SubText>{props.subText}</SubText>}
       <Bottom>
-        {props.data.map((item, index) => (
-          <BottomList key={index}>
-            <Number>{item.number}</Number>
-            <Column>
-              <Tag
-                type={"tag"}
-                backColor={color.Orange[0]}
-                color={color.Orange[3]}
-                data={`#${item.tag}`}
-                width="102px"
-                height="53px"
-                fontSize="20px"
-                fontWeight="bold"
-              />
-              <MainText data={item.text} size={"25px"} fontWeight={"bold"} />
-            </Column>
-            <UserNameWrapper>
-              <UserName data={item.user} />
-            </UserNameWrapper>
-          </BottomList>
-        ))}
-        <InnerText>{props.textContent || "내용이 없습니다."}</InnerText>
-        <Image />
+        {list.length > 0 && ( 
+          <>
+            <BottomList key={list.length - 1}>
+              <Column>
+                <Tag
+                  type={"tag"}
+                  backColor={color.Orange[0]}
+                  color={color.Orange[3]}
+                  data={"#일상"} 
+                  width="102px"
+                  height="53px"
+                  fontSize="20px"
+                  fontWeight="bold"
+                />
+                <MainText data={list[list.length - 1].title} size={"25px"} fontWeight={"bold"} />
+              </Column>
+              <UserNameWrapper>
+                <UserName data={list[list.length - 1].nickname} />
+              </UserNameWrapper>
+            </BottomList>
+            <InnerText>{list[list.length - 1].body || "내용이 없습니다."}</InnerText>
+            <Image />
+          </>
+        )}
+
       </Bottom>
     </Div>
   );
@@ -144,15 +171,16 @@ const UserNameWrapper = styled.div`
 
 const InnerText = styled.div`
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   color: ${color.Black};
-  margin-top: 20px;
-  padding: 10px;
+  /* margin-top: 20px; */
+  padding: 25px 0;
   text-align: left;
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  
 `;
 
 const Image = styled.div`
@@ -160,5 +188,6 @@ const Image = styled.div`
   height: 380px;
   border: solid 1px ${color.Orange[3]};
   border-radius: 10px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 `;
+

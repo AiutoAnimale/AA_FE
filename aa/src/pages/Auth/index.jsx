@@ -9,6 +9,8 @@ import Button from "../../components/Button";
 import NextButton from "../../components/Next";
 import axios from "axios";
 
+// 완료
+
 export default function Login() {
     const navigate = useNavigate();
     const [ pwState, setPwState ] = useState(false);
@@ -25,9 +27,9 @@ export default function Login() {
         console.log(text);
     }
 
-    useEffect(() => {
-        console.log(loginData);
-    }, [loginData]);
+    // useEffect(() => {
+    //     console.log(loginData);
+    // }, [loginData]);
 
 
     const onClickLogin = async (e) => {

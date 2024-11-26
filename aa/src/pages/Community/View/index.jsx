@@ -1,13 +1,16 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../../style/theme";
-import DataContainer from "../../Main/DataContainer";
+import ViewDataContainer from "../../Main/PopularDataContainer/index2";
 import CommentContainer from "../../../components/CommentContainer";
+
+import axios from "axios";
+
 
 // communityview 커뮤니티 상세보기
 
 export default function CommunityView() {
-  const navigate = useNavigate();
   const PopularList = [
     {
       text: "우리 푕힁이가 대덕SW고 대마냥이랑 만나서 싸움 ㄷㄷ",
@@ -54,11 +57,12 @@ export default function CommunityView() {
     },
   ];
 
+
   return (
     <>
       <Container>
         <Marginbox />
-        <DataContainer data={PopularList} color={color.Orange[1]} />
+        <ViewDataContainer data={PopularList} color={color.Orange[1]} />
         <CommentContainer data={CommentList} number={CommentList.length} />
       </Container>
     </>

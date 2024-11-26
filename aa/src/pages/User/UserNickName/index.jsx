@@ -17,9 +17,9 @@ export default function UserNickName() {
         setSignupData(location.state.data);
     }, []);
 
-    useEffect(() => {
-        console.log(signupData);
-    }, [signupData])
+    // useEffect(() => {
+    //     console.log(signupData);
+    // }, [signupData])
 
     const handleInputChange = (text, field) => {
         setSignupData(prevData => ({

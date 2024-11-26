@@ -9,6 +9,8 @@ import Button from "../../../components/Button";
 import NextButton from "../../../components/Next";
 import Select from "../../../components/Select";
 
+import axios from "axios";
+
 export default function UserPetData() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,10 +26,10 @@ export default function UserPetData() {
     }, [signupData])
 
     useEffect(() => {
-        if(state == '여아') {
-            handleInputChange('female', "pet_sex");
+        if(state === '여아') {
+            handleInputChange('0', "pet_sex");
         } else {
-            handleInputChange('male', "pet_sex");
+            handleInputChange('1', "pet_sex");
         }
     }, [state])
 
@@ -38,10 +40,33 @@ export default function UserPetData() {
         }));
     }
 
-    const onClickNext = () => {
-        console.log(signupData);
-        navigate("/login");
-    }
+    const onClickNext = async () => {
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_API_KEY}/users/signup`, signupData);
+            if (response.status === 201) {
+                console.log('회원가입에 성공하였습니다.');
+                navigate('/login');
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.status === 409) {
+                    alert('중복된 아이디입니다.');
+                    console.error('중복된 아이디입니다.', error.response.data?.message || 'No message provided');
+                    navigate('/signupData');
+                } else {
+                    console.error('회원가입에 실패하였습니다.', error.response.data?.message || 'No message provided');
+                    console.error('상태:', error.response.status);
+                    console.log(signupData);
+                }
+            } else if (error.request) {
+                
+                console.error('서버로부터 응답이 없습니다.', error.message);
+            } else {
+                console.error('요청 중 문제가 발생했습니다.', error.message);
+            }
+        }
+    };
+    
 
     return (
         <>
@@ -70,14 +95,14 @@ export default function UserPetData() {
                             <SelectContainer>
                                 <Select
                                 text={"여아"}
-                                color={state=='여아' ? color.Orange[4] : color.Gray[2]}
-                                backColor={state=='여아' ? color.Orange[0] : color.White}
+                                color={state==='여아' ? color.Orange[4] : color.Gray[2]}
+                                backColor={state==='여아' ? color.Orange[0] : color.White}
                                 onClick={() => setState('여아')}
                                 />
                                 <Select
                                 text={"남아"}
-                                color={state=='남아' ? color.Orange[4] : color.Gray[2]}
-                                backColor={state=='남아' ? color.Orange[0] : color.White}
+                                color={state==='남아' ? color.Orange[4] : color.Gray[2]}
+                                backColor={state==='남아' ? color.Orange[0] : color.White}
                                 onClick={() => setState('남아')}
                                 />
                             </SelectContainer>
