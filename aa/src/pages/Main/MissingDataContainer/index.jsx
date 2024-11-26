@@ -13,15 +13,9 @@ export default function MissingDataContainer({ data }) {
                 <Title>{item.title}</Title>
               </InnerContainer>
               <Borderbox>
-                <TitleContainer>
-                  <Place>실종 위치</Place>
-                  <Time>실종 시각</Time>
-                  <Feature>특징</Feature>
-                </TitleContainer>
+                <TitleContainer></TitleContainer>
                 <ContentContainer>
                   <Placecontent>{item.Content}</Placecontent>
-                  <Timecontent>{item.Content}</Timecontent>
-                  <Featurecontent>{item.Content}</Featurecontent>
                 </ContentContainer>
               </Borderbox>
               <Content>댓글 3개...</Content>
