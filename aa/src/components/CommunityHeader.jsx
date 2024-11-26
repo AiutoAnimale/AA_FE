@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as LogoSVG } from "../assets/Logo.svg";
 
-
 export default function Header() {
   const navigate = useNavigate();
 
@@ -30,7 +29,7 @@ export default function Header() {
               </Data>
             ))}
           </DataContainer>
-          <CreatePostButton onClick={() => navigate("/createpost")}>
+          <CreatePostButton onClick={() => navigate("/communitycreate")}>
             커뮤니티 글 작성하기
           </CreatePostButton>
         </List>

@@ -29,7 +29,7 @@ export default function Header() {
               </Data>
             ))}
           </DataContainer>
-          <CreatePostButton onClick={() => navigate("/createpost")}>
+          <CreatePostButton onClick={() => navigate("/communitycreate")}>
             커뮤니티 글 작성하기
           </CreatePostButton>
         </List>
