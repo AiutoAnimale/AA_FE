@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { color } from "../../../style/theme";
 import { breakpoints } from "../../../style/device";
 import styled from "styled-components";
-
 import UserName from "../../../components/UserName";
 import Tag from "../../../components/Tag";
 import MainText from "../../../components/MainText";
