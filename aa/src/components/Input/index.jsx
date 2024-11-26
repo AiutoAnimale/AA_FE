@@ -61,7 +61,7 @@ const ErrorText = styled.div`
 const InputContainer = styled.input`
     width: 94%;
     height: 54px;
-    padding: 0 3%;
+    padding: 0 15px;
     border: solid 1px ${color.Gray[1]};
     border-radius: 5px;
     display: flex;

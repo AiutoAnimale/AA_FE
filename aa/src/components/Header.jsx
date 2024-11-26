@@ -7,6 +7,8 @@ import { ReactComponent as LogoSVG } from "../assets/Logo.svg";
 
 import axios from "axios";
 
+// 완료
+
 export default function Header() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
@@ -16,7 +18,6 @@ export default function Header() {
     { name: "커뮤니티", path: "/communitymain" },
     { name: "실종", path: "/missingmain" },
   ];
-
   
   const onInfo = async () => {
     try {

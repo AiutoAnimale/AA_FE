@@ -7,6 +7,11 @@ import styled from "styled-components";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import NextButton from "../../../components/Next";
+// import axios from "axios";
+
+
+
+
 
 export default function UserData() {
     const navigate = useNavigate();
@@ -27,12 +32,63 @@ export default function UserData() {
           ...prevData,
           [field]: text
         }));
+        console.log(signupData);
+    }
+
+    const validateInput = () => {
+        if (signupData.userid.length < 5 || signupData.userid.length > 25) {
+            alert("아이디는 5자에서 25자 사이여야 합니다.");
+            return false;
+        }
+        if (signupData.userpw.length < 5 || signupData.userpw.length > 40) {
+            alert("비밀번호는 5자에서 40자 사이여야 합니다.");
+            return false;
+        }
+        return true;
     }
 
     const onClickNext = () => {
+        if (!validateInput()) {
+            return; // 검증 실패 시 함수 종료
+        }
+
         navigate("/signupNick", { state: { data: signupData } });
     }
+
+
+
+    /*const onSignup = async ( signuDate ) => {
+        try {
+            const response = await axios.post( "", {
+                "userid" : signuDate.userid,
+                "userpw" : signuDate.userPw,
+                "nickname" : signuDate.nickname,
+                "pet_name" : signuDate.pet_name,
+                "pet_sex" : signuDate.pet_sex,
+                "species" : signuDate.species,
+                "pet_birth" : signuDate.pet_birth,
+                "region" : signuDate.region 
+            });
+            
+            if (response.status === 201) {
+                console.log("회원가입에 성공");
+            }
+        }
+        catch (error){
+            if (error.response) {
+                if (error.response === 409) {
+                    alert("중복된 아이디입니다.");
+                }
+                else if (error.response === 400) {
+                    alert("요청에 실패하였습니다.")
+                }
+            }
+            
+        }
+    }*/
     
+
+
     return (
         <>
             <Container>
@@ -52,13 +108,13 @@ export default function UserData() {
                         <Input
                         text={"비밀번호"}
                         placeholder={"비밀번호를 입력하세요"}
-                        type={pwState == true ? 'text' : 'password'}
+                        type={pwState === true ? 'text' : 'password'}
                         state={'password'}
                         onClick={() => setPwState(!pwState)}
                         onGetText={(text) => handleInputChange(text, "userpw")}
                         />
                     </InputContainer>
-                    <Button onClick={() => onClickNext()} text={"다음"} />
+                    <Button onClick={() => onClickNext()} text={"다음"} type="submit"/>
                 </MainContainer>
             </Container>
         </>

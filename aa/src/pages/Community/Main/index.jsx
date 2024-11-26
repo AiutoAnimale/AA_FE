@@ -1,11 +1,15 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../../style/theme";
 import DataContainer from "../../Main/DataContainer/index";
 import PopularDataContainer from "../../Main/PopularDataContainer";
 
+import axios from "axios";
+
 export default function CommunityMain() {
   const navigate = useNavigate();
+  const [list, setList] = useState([]);
 
   const List = [
     {
@@ -56,6 +60,38 @@ export default function CommunityMain() {
     },
   ];
 
+/*
+  const getViewAllList = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_KEY}/feeds/viewAllList`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`, 
+        }
+      });
+
+      const data = response.data;
+
+      setList([{
+        title: data.title,
+        body: data.body,
+        tag: data.tag,
+        emergency: data.emergency,
+      }]); 
+      // 배열로 감싸서 상태 업데이트
+
+      
+    }
+    catch (error) {
+      console.log("전체 게시물을 불러오는데 실패 : ", error.message);
+    }
+  }
+
+  useEffect(() => {
+    getViewAllList();
+  }, []);
+*/
+
+
   return (
     <>
       <Container>
@@ -65,7 +101,13 @@ export default function CommunityMain() {
           color={color.Orange[1]}
           btnText="자세히 보기"
         />
-        <DataContainer data={List} text="커뮤니티" color={color.Orange[1]} />
+        
+        <DataContainer
+          data={list}
+          text="커뮤니티"
+          color={color.Orange[1]}
+          subText="서로의 이야기를 나누어봐요"
+        />
       </Container>
     </>
   );

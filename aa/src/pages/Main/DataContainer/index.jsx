@@ -1,11 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { color } from "../../../style/theme";
 import styled from "styled-components";
 import UserName from "../../../components/UserName";
 import Tag from "../../../components/Tag";
 import MainText from "../../../components/MainText";
 
+
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 export default function DataContainer(props) {
+  const navigate = useNavigate();
+
+  const [list, setList] = useState([]);
+
+  const getViewAllList = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_KEY}/feeds/viewAllList`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      });
+
+      setList(response.data);
+    } catch (error) {
+      console.log("전체 게시물을 불러오는데 실패 : ", error.message);
+    }
+  };
+
+  useEffect(() => {
+    getViewAllList();
+  }, []);
+
+  const handleClick = (idx) => {
+    navigate('/communityview', 
+      { state: { idx } }
+    )
+  }
+
+
   return (
     <Div>
       <TextDiv>
@@ -14,21 +47,23 @@ export default function DataContainer(props) {
         <MoreBtn onClick={props.event}>{props.btnText}</MoreBtn>
       </TextDiv>
       <Bottom>
-        {props.data.map((item, index) => (
-          <BottomList key={index}>
-            <Number>{item.number}</Number>
-            <Column>
-              <Tag
-                type={"tag"}
-                backColor={color.Orange[0]}
-                color={color.Orange[3]}
-                data={`#${item.tag}`}
-              />
-              <MainText data={item.text} size={"18px"} />
-              <UserName data={item.user} />
-            </Column>
-          </BottomList>
-        ))}
+        {list.length > 1 && (
+          list.slice(0, -1).slice(-5).map((item, index) => (
+            <BottomList key={index} onClick={handleClick(item.idx)}>
+              <Number>{index + 1}</Number>
+              <Column>
+                <Tag
+                  type={"tag"}
+                  backColor={color.Orange[0]}
+                  color={color.Orange[3]}
+                  data={item.emergency === 0 ? "#일상" : "#실종"}
+                />
+                <MainText data={item.title} size={"18px"} />
+                <UserName data={item.nickname} />
+              </Column>
+            </BottomList>
+          ))
+        )}
       </Bottom>
     </Div>
   );
@@ -60,10 +95,10 @@ const SubText = styled.div`
 const TextDiv = styled.div`
   height: auto;
   display: flex;
-  /* flex-direction: column; */
-  /* align-items: flex-start; */
-  /* justify-content: flex-start; */
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* justify-content: space-between; */
   border-bottom: solid 1px ${color.Gray[1]};
   width: 100%;
   padding-bottom: 10px;
