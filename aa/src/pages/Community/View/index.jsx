@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../../style/theme";
-import PopularDataContainer from "../../Main/PopularDataContainer";
+import DataContainer from "../../Main/DataContainer";
 import CommentContainer from "../../../components/CommentContainer";
-
 
 // communityview 커뮤니티 상세보기
 
@@ -59,7 +58,7 @@ export default function CommunityView() {
     <>
       <Container>
         <Marginbox />
-        <PopularDataContainer data={PopularList} color={color.Orange[1]} />
+        <DataContainer data={PopularList} color={color.Orange[1]} />
         <CommentContainer data={CommentList} number={CommentList.length} />
       </Container>
     </>
